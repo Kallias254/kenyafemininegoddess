@@ -1,7 +1,3 @@
-"""
-Django settings for blog project.
-"""
-
 import os
 import dj_database_url
 from decouple import config
@@ -96,7 +92,18 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+DATABASES = {
+  'default': {
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': 'neondb',
+    'USER': 'neondb_owner',
+    'PASSWORD': '4MUPmrWS7xwV',
+    'HOST': 'ep-cool-dew-a4fl1wt4.us-east-1.aws.neon.tech',
+    'PORT': '5432',
+    'OPTIONS': {'sslmode': 'require'},
+  }
 
+}
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -125,7 +132,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_UPLOAD_PATH = "/media/"
 
 UPLOADCARE = {
   # Don’t forget to set real keys when it gets real :)
