@@ -523,7 +523,7 @@ li {
 .site-header__logo-box {
     position: relative;
     display: block;
-    max-width: 190px;
+    max-width: 130px;
     width: 100%;
     padding: 51px 0;
 }
@@ -1178,7 +1178,7 @@ li {
 .main-nav__left-three {
     position: relative;
     display: block;
-    max-width: 450px;
+    max-width: 350px;
     width: 100%;
     background: #ffffff;
    
