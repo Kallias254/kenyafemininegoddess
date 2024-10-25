@@ -1,0 +1,197 @@
+{% extends 'basemain.html' %}
+{% load static  %}
+
+
+{% block content %}
+
+
+
+
+
+<!--  -->
+<div class="page-wrapper">
+
+ 
+  
+   
+    <section class="news-two" style="background-image: url('{% static 'assets/images/backgrounds/news-two-bg.jpg' %}');">
+        <br> <br> <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-4">
+                    <div class="news-two__left">
+                        <div class="block-title text-left">
+                            <h4>Our Stories</h4>
+                            <h2>Featured Stories &amp; <br>  Blogs</h2>
+                        </div>
+                        <p class="news-two__text">There are many variations of passages of Lorem Ipsum available
+                            simply free text, but the majority.</p>
+                    </div>
+                </div>
+                <div class="col-xl-8">
+                    <div class="news-two__right">
+                        <div class="news-two__carousel owl-theme owl-carousel owl-loaded owl-drag">
+                            <!--News two Single-->
+                            
+                            <!--News two Single-->
+                            
+                            <!--News two Single-->
+                            
+                            <div class="owl-stage-outer">
+                                <div class="owl-stage" style="transform: translate3d(-800px, 0px, 0px); transition: 0.5s; width: 2800px;">
+                                    {% for p in blog %}
+                                        <div class="owl-item" style="width: 370px; margin-right: 30px;">
+                                            <div class="news-one__single">
+                                                <div class="news-one__img">
+                                                    <div class="news-one__img-box">
+                                                        <img src="{{ p.image.cdn_url }}" alt=""> <!-- Assuming 'p.image' contains the image file name -->
+                                                        <a href="{% url 'blogapp:blog-detail' p.pid %}"></a> <!-- Adjust 'news-details' to your actual URL name -->
+                                                    </div>
+                                                    <div class="news-one__date-box">
+                                                        <p>{{ p.date|date:"d" }} <br> {{ p.date|date:"M" }}</p> <!-- Formats the date -->
+                                                    </div>
+                                                </div>
+                                                <div class="news-one__content">
+                                                    <ul class="list-unstyled news-one__meta">
+                                                        <li><a href="#"><i class="far fa-user-circle"></i> {{p.user}}</a></li> <!-- Assuming you have an author field -->
+                                                        <li><span>/</span></li>
+                                                        <li><a href="#"><i class="far fa-comments"></i> {{ p.comments.count }} Comments</a></li> <!-- Adjust according to your comment field -->
+                                                    </ul>
+                                                    <div class="news-one__title">
+                                                        <h3><a href="{% url 'blogapp:blog-detail' p.pid %}">{{p.title|truncatechars:110}}</a></h3> <!-- Adjust to your actual field -->
+                                                    </div>
+                                                    <a href="{% url 'blogapp:blog-detail' p.pid %}" class="thm-btn news-one__btn">More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                    <div class="owl-nav"><button type="button" role="presentation" class="owl-prev"><span class="icon-right-arrow left"></span></button><button type="button" role="presentation" class="owl-next"><span class="icon-right-arrow"></span></button></div><div class="owl-dots disabled"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--News Page Start-->
+    <section class="news-page">
+        <div class="container">
+            <div class= "col-md-12">
+                {% if query == "" or query == None %}
+                {% else %}
+                <h2 class="title" style="color: rgb(0, 32, 59);">Showing Results for "{{query}}"</h2>
+                {% endif %}
+
+            <div class="row">
+                {% for p in blog %}
+           
+                <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="100ms">
+                  
+                    <div class="news-one__single">
+                        <div class="news-one__img">
+                            <div class="news-one__img-box">
+                                <img src="{{ p.image.cdn_url }}" alt="">
+                                <a href="{% url 'blogapp:blog-detail' p.pid %}"></a>                              
+                            </div>
+                            <div class="news-one__date-box">
+                                <p><span class="date-day">{{ p.date|date:"d" }}</span><br>
+    <span class="date-month">{{ p.date|date:"M" }}</span><br>
+    <span class="date-year">{{ p.date|date:"Y" }}</span></p>
+                            </div>
+                        </div>
+                        <div class="news-one__content">
+                            <ul class="list-unstyled news-one__meta">
+                                <li><a href="#"><i class="far fa-user-circle"></i>{{p.user}}</a></li>
+                                <li><span>/</span></li>
+                                <li><a href="#"><i class="far fa-comments"></i> </a>
+                                </li>
+                            </ul>
+                            <div class="news-one__title">
+                                <h3><a href="{% url 'blogapp:blog-detail' p.pid %}">{{p.title|truncatechars:110}}</a></h3>
+                            </div> 
+                            <a href="{% url 'blogapp:blog-detail' p.pid %}" class="thm-btn news-one__btn">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                
+                {% endfor %}
+     
+                
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="gowilds-pagination wow fadeInDown mt-60 mb-30" style="visibility: hidden; animation-name: none;">
+                        <ul class="page_navigation">
+                          {% if blog.has_previous %}
+                            <li><a href="{% url 'blogapp:blog-list' %}?page={{ blog.previous_page_number }}"><i class="far fa-arrow-left"></i></a></li>
+                          {% endif %}
+                          
+                          {% for page_number in blog.paginator.page_range %}
+                            <li><a href="{% url 'blogapp:blog-list' %}?page={{ page_number }}" {% if page_number == blog.number %}class="active"{% endif %}>{{ page_number }}</a></li>
+                          {% endfor %}
+                          
+                          {% if blog.has_next %}
+                            <li><a href="{% url 'blogapp:blog-list' %}?page={{ blog.next_page_number }}"><i class="far fa-arrow-right"></i></a></li>
+                          {% endif %}
+                        </ul>
+                      </div>
+                      
+                </div>
+              </div>
+</div>
+          <!-- /.text-center -->
+       
+        </div>
+    </section>
+    <!--News Page End-->
+
+          <!--Site Footer One Start-->
+          {% include 'navbar.html' %}
+        <!--Site Footer One End-->
+       
+
+
+    <!--Site Footer Bottom End-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div><!-- /.page-wrapper -->
+
+<a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
+
+
+
+
+
+
+
+<div class="search-popup">
+    <div class="search-popup__overlay custom-cursor__overlay">
+        <div class="cursor"></div>
+        <div class="cursor-follower"></div>
+    </div><!-- /.search-popup__overlay -->
+    <div class="search-popup__inner">
+        <form action="#" class="search-popup__form">
+            <input type="text" name="search" placeholder="Type here to Search....">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+</div>
+
+{% include 'footer.html' %}
+{% endblock %}

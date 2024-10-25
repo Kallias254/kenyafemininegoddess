@@ -1,0 +1,305 @@
+{% extends 'basemain.html' %}
+{% load static  %}
+
+
+{% block content %}
+<div class="preloader">
+    <img src="{% static 'assets/images/loader.png' %}" class="preloader__image" alt="">
+</div>
+    <div class="page-wrapper">
+
+        <!-- Main Slider Start -->
+        <section class="main-slider main-slider-two">
+            <div class="swiper-container thm-swiper__slider" data-swiper-options='{"slidesPerView": 1, "loop": true,
+    "effect": "fade",
+    "pagination": {
+        "el": "#main-slider-pagination",
+        "type": "bullets",
+        "clickable": true
+      },
+    "navigation": {
+        "nextEl": ".main-slider-button-next",
+        "prevEl": ".main-slider-button-prev",
+        "clickable": true
+    },
+    "autoplay": {
+        "delay": 5000
+    }}'>
+
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="image-layer"
+                        style="background-image: url('{% static 'assets/images/main-slider/slider-2-1.jpg' %}');"></div>
+                        <div class="container">
+                            <div class="swiper-slide__inner">
+                                <div class="row">
+                                    <div class="col-xl-12">
+                                        <p>Nurturing Communities</p>
+                                        <h2>One Woman <br> at a Time.</h2>
+                                        <a href="about.html" class="thm-btn">Learn More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image-layer"
+                            style="background-image: url('{% static 'assets/images/main-slider/slider-2-2.jpg' %}');"></div>
+                        <div class="container">
+                            <div class="swiper-slide__inner">
+                                <div class="row">
+                                    <div class="col-xl-12">
+                                        <p>Elevating Women,</p>
+                                        <h2> Uplifting Communities. </h2>
+                                        <a href="about.html" class="thm-btn">Learn More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image-layer"
+                            style="background-image: url('{% static 'assets/images/main-slider/slider-2-1.jpg' %}');"></div>
+                        <div class="container">
+                            <div class="swiper-slide__inner">
+                                <div class="row">
+                                    <div class="col-xl-12">
+                                        <p>Helping Them Today</p>
+                                        <h2>We Can Make <br> A Difference</h2>
+                                        <a href="about.html" class="thm-btn">Learn More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination" id="main-slider-pagination">
+
+                </div>
+            </div>
+        </section>
+        <!-- Main Slider End -->
+        <section class="news-two" style="background-image: url('{% static 'assets/images/backgrounds/welcome_one_bg.jpg' %}');">
+            <div class="welcome-one-hands" style="background-image:url('{% static 'assets/images/backgrounds/welcome_one_hands.png' %}');"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="welcome-one__left">
+                            <div class="welcome-one__img wow slideInLeft animated" data-wow-delay="100ms" style="visibility: visible; animation-delay: 100ms; animation-name: slideInLeft;">
+                                <img src="{% static 'assets/images/resources/welcome_one_img_1.png' %}" alt="">
+                                <div class="welcome-one__badge">
+                                    <img src="{% static 'assets/images/resources/welcome_one_badge.png' %}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="welcome-one__right">
+                            <div class="block-title text-left">
+                                <h4>About us</h4>
+                                <h2>Empowering Women, Transforming Lives</h2>
+                            </div>
+                            <p class="welcome-one__text2">Kenyan Feminine Goddess is more than just a platform; it offers unwavering support and inspiration for women in our communities. We create spaces for women to connect, share experiences, and gain practical knowledge and confidence to tackle challenges like illiteracy, hunger, and poor healthcare. Through the Goddess Care Initiative and strategic partnerships, we aim to empower women and young girls to embrace personal growth and unlock their full potential</p>
+                            <ul class="welcome-one__list list-unstyled">
+                                <li><span class="icon-confirmation"></span>Addressing Critical Social Issues</li>
+                                <li><span class="icon-confirmation"></span>Empowerment and Support</li>
+                                <li><span class="icon-confirmation"></span>Community Building</li>
+                            </ul>
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Give Helping Start-->
+     
+  
+        <!--Charity Activity Start-->
+        <section class="charity-activity" style="margin-top:50px;">
+            <div class="charity-activity-map" style="background-image: url({% static 'assets/images/map/charity_activity_map.png' %})">
+            </div>
+            <div class="container">
+                <div class="row">
+                 
+                    <div class="col-xl-7 col-lg-7">
+                        <div class="charity-activity__right">
+                            <div class="charity-activity__right-content">
+                                <h2>Our Mission</h2>
+                                <p>To establish a platform for women and young girls to engage with like-minded actors
+                                    targeting rural and marginalized communities to develop long term and sustainable
+                                    solutions to alleviate their social mobility opportunities.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-5 col-lg-5">
+                        <div class="charity-activity__left">
+                            <div class="charity-activity__img">
+                                <img src="{% static 'assets/images/resources/charity_activity_img.jpg' %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Charity Activity End-->
+        <section class="become-volunteer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5">
+                        <div class="become-volunteer__left">
+                            <div class="become-volunteer__img">
+                                <img src="{% static 'assets/images/resources/become-volunteer-img1.png' %}" alt="">
+                            </div>
+                        
+                            
+                        </div>
+                    </div>
+                    <div class="col-xl-7 col-lg-7">
+                        <div class="become-volunteer__right">
+                            <div class="become-volunteer__requirements">
+                                <h3>Our Vision </h3>
+                                <p class="become-volunteer__text">A society where women and children are devoid of hunger, have access to quality
+                                    healthcare and empowered to pursue academic goals safeguarding their human rights
+                                    and dignity.
+                                <!-- <ul class="list-unstyled become-volunteer__requirements-list">
+                                    <li>
+                                        <div class="become-volunteer__requirements-icon">
+                                            <span class="icon-confirmation"></span>
+                                        </div>
+                                        <div class="become-volunteer__requirements-text">
+                                            <p>Nsectetur cing do not elit.</p>
+                                        </div>
+
+                                    </li>
+                                    <li>
+                                        <div class="become-volunteer__requirements-icon">
+                                            <span class="icon-confirmation"></span>
+                                        </div>
+                                        <div class="become-volunteer__requirements-text">
+                                            <p>Suspe ndisse suscipit sagittis in leo.</p>
+                                        </div>
+
+                                    </li>
+                                    <li>
+                                        <div class="become-volunteer__requirements-icon">
+                                            <span class="icon-confirmation"></span>
+                                        </div>
+                                        <div class="become-volunteer__requirements-text">
+                                            <p>Entum estibulum dignissim lipsm posuere.</p>
+                                        </div>
+
+                                    </li>
+                                </ul> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+   
+
+        <!--CTA One Start-->
+        <section class="cta-one" style="background-image: url({% static 'assets/images/backgrounds/cta-one-bg.png' %})">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="row">
+                            <div class="col-xl-9">
+                                <div class="cta-one__inner">
+                                    <div class="cta-one__text">
+                                        <p>If you share our vision and passion for creating change, we invite you to join us on 
+                                            this incredible journey. Whether you’re a volunteer, donor, or partner, together we can make a tangible difference.</p>
+                                        
+                                    </div>
+                                   
+                                </div>
+                            </div>  
+                        <div class="col-xl-3">
+                            <div class="cta-one__btn">
+                                <a href="become-volunteer.html" class="thm-btn">Get Involved Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--CTA One End-->
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    </div><!-- /.page-wrapper -->
+
+    <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
+
+
+
+
+    <div class="mobile-nav__wrapper">
+        <div class="mobile-nav__overlay side-menu__toggler mobile-nav__toggler"></div>
+        <div class="mobile-nav__content">
+            <span class="mobile-nav__close side-menu__toggler mobile-nav__toggler">
+                <i class="fa fa-times"></i>
+            </span>
+            <div class="logo-box">
+              
+            </div>
+            <!-- /.logo-box -->
+            <div class="mobile-nav__container clearfix"></div>
+            <!-- /.mobile-nav__container -->
+            <ul class="mobile-nav__contact list-unstyled">
+                <li>
+                    <i class="fas fa-envelope"></i>
+                    <a href="kenyanfemininegoddess@gmail.com">kenyanfemininegoddess@gmail.com</a>
+                </li>
+                <li>
+                    <i class="fas fa-phone-square-alt"></i>
+                    <a href="tel:+254-712-402-483">+254 712 402 483</a>
+                </li>
+            </ul><!-- /.mobile-nav__contact -->
+            <div class="mobile-nav__top">
+                <div class="mobile-nav__social">
+                    <a href="https://twitter.com/kefegod" target="_blank" aria-label="twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="facebook"><i class="fab fa-facebook-square"></i></a>
+                    <a href="#" aria-label="pinterest"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="https://www.instagram.com/kenyan_feminine_goddess"  target="_blank" aria-label="instagram"><i class="fab fa-instagram"></i></a>
+                </div><!-- /.mobile-nav__social -->
+            </div><!-- /.mobile-nav__top -->
+        </div>
+    </div>
+
+
+
+    <div class="search-popup">
+        <div class="search-popup__overlay custom-cursor__overlay">
+            <div class="cursor"></div>
+            <div class="cursor-follower"></div>
+        </div><!-- /.search-popup__overlay -->
+        <div class="search-popup__inner">
+            <form action="#" class="search-popup__form">
+                <input type="text" name="search" placeholder="Type here to Search....">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+
+
+
+ 
+
+
+
+{% include 'footer.html' %}
+
+{% endblock %}
