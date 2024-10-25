@@ -88,10 +88,18 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+DATABASES = {
+  'default': {
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': 'neondb',
+    'USER': 'neondb_owner',
+    'PASSWORD': '4MUPmrWS7xwV',
+    'HOST': 'ep-cool-dew-a4fl1wt4.us-east-1.aws.neon.tech',
+    'PORT': '5432',
+    'OPTIONS': {'sslmode': 'require'},
+  }
 
-
-# Password validation
-# https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
+}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
