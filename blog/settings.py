@@ -126,3 +126,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
+
+UPLOADCARE = {
+  # Don’t forget to set real keys when it gets real :)
+
+  'pub_key': 'f914008525312051b54c',
+  'secret': '06f605e3fa31437f2a51',
+}
