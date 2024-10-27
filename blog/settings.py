@@ -79,7 +79,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'blog.wsgi.application'
 
-
+WHITENOISE_MANIFEST_STRICT = False
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
