@@ -9,6 +9,6 @@ echo "Building the project JDA..."
 
 pip install -r requirements.txt
 
-python manage.py collectstatic --ignore="*.map"
+python manage.py collectstatic --ignore="*.map" --noinput
 python manage.py makemigrations --noinput
 python manage.py migrate --noinput
