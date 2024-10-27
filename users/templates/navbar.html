@@ -13,7 +13,7 @@
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="main-nav__left main-nav__left-three float-left">
                         <div class="logo">
-                            <a href="index.html"><img src="{% static 'assets/images/resources/log.png' %}" width="50%"  alt="" style="margin: 10px;" ></a>
+                            <a href="{% url 'users:home' %}"><img src="{% static 'assets/images/resources/log3.png' %}" width="55%"  alt="" style="margin: 10px;" ></a>
                         </div>
                         <a href="#" class="side-menu__toggler">
                             <i class="fa fa-bars"></i>
@@ -22,28 +22,31 @@
                     <div class="main-nav__main-navigation main-nav__main-navigation__three float-left clearfix">
                         <ul class=" main-nav__navigation-box float-left">
                             <li>
-                                <a href="">Home</a>
+                                <a href="{% url 'users:home' %}">Home</a>
                             </li>
                             <li>
-                                <a href="">About Us</a>
+                                <a href="{% url 'users:aboutus' %}">About Us</a>
                             </li>
                             <li class="dropdown">
-                                <a href="#">Our Programs<button class="dropdown-btn"></button></a>
+                                <a href="">Our Programs<button class="dropdown-btn"></button></a>
                                 <ul>
-                                    <li><a href="news.html">Goddess Care Initiative</a></li>
+                                    <li><a href="{% url 'users:programs' %}">Goddess Care Initiative</a></li>
                                 </ul><!-- /.sub-menu -->
                             </li>
                             <li>
-                                <a href="">Our team</a>
+                                <a href="{% url 'users:ourteam' %}">Our team</a>
                             </li>
                             <li>
-                                <a href="">Blogs</a>
+                                <a href="{% url 'blogapp:blog-list' %}">Blogs</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'users:contactus' %}">Contact Us</a>
                             </li>
                            
                            
                         </ul>
                     </div><!-- /.navbar-collapse -->
-                    <div class="main-nav__right-three float-right">
+                    <!-- <div class="main-nav__right-three float-right">
                         <div class="main-nav__right__btn-one">
                             <a href="campaigns.html"><i class="fas fa-heart"></i>Donate</a>
                         </div>
@@ -53,7 +56,7 @@
                                 <i class="icon-magnifying-glass"></i>
                             </a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </nav>
             
