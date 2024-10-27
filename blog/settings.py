@@ -10,7 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
-from pathlib import Path, os
+from pathlib import Path
+import os
+import dj_database_url
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -134,24 +137,21 @@ import os
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
-
-# This is where collectstatic will gather all static files for deployment
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Additional directories to look for static files (e.g., your assets directory)
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),  # Directory for static files during development
-    os.path.join(BASE_DIR, 'static'),   # Add your assets directory if it contains static files
 ]
 
 # WhiteNoise settings for serving static files
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Media files (user-uploaded files)
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# Template settings
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"# Template settings
 
 ## For media files
 UPLOADCARE = {
