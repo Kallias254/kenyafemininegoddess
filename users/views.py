@@ -4,16 +4,17 @@ from django.contrib.auth.models import User, auth
 
 from django.shortcuts import render,redirect,HttpResponse
 from django.http import Http404
-
-
-
-
-
+from blogapp.models import StaticContent
 
 
 def home(request):
-    
-    return render(request, 'index.html')
+    content = {
+        'about_us': get_object_or_404(StaticContent, section_name='About Us'),
+        'mission': get_object_or_404(StaticContent, section_name='Our Mission'),
+        'vision': get_object_or_404(StaticContent, section_name='Vision'),
+    }
+    return render(request, 'index.html', content)
+
 
 def aboutus(request):
     

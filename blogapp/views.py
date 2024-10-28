@@ -83,3 +83,6 @@ def category_detail(request, slug):
         "categories": categories,
     }
     return render(request, 'blog/category-detail.html', context)
+
+
+

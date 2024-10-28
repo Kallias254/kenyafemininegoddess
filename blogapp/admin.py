@@ -1,6 +1,11 @@
 from django.contrib import admin
-from blogapp.models import Post, Comment, Category
+from blogapp.models import Post, Comment, Category, StaticContent
 from import_export.admin import ImportExportModelAdmin
+
+
+class StaticContentAdmin(admin.ModelAdmin):
+    list_display = ('section_name', 'content')  # Display section name and content in the admin list
+    search_fields = ['section_name']  # Allow searching by section name for easier management 
 
 class ArticleAdmin(ImportExportModelAdmin):
     search_fields = ['title']
@@ -24,3 +29,4 @@ class CommentAdmin(ImportExportModelAdmin):
 admin.site.register(Post, ArticleAdmin)  # Keep this line
 admin.site.register(Comment, CommentAdmin)
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(StaticContent, StaticContentAdmin)
