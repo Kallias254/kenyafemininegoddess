@@ -34,6 +34,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Application definition
 
 INSTALLED_APPS = [
+    'jet',
     'graphene_django',
     'users.apps.UsersConfig',
     'blogapp',
