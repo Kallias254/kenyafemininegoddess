@@ -47,7 +47,7 @@ def blogDetail(request, pid):
         email = request.POST.get("email")
 
         Comment.objects.create(full_name=full_name, email=email ,comment=comment, post=post)
-        messages.success(request, f"Hey {full_name}, your comment have been sent for review.")
+        messages.success(request, f"Hey {full_name}, your comment have posted.")
 
     context = {
         "post": post,
@@ -56,6 +56,7 @@ def blogDetail(request, pid):
         "related_blogs":related_blogs
     }
     return render(request, 'blogdetail.html', context)
+    
 
 
 def category_detail(request, slug):

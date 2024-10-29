@@ -44,8 +44,7 @@
                                
                                 <li><a href="#"><i class="far fa-user-circle"></i> {{post.category.title}}</a></li>
                                 <li><a href="#"><i class="far fa-user-circle"></i> Posted by {{post.user}}</a></li>
-                                <li><a href="#"><i class="far fa-comments"></i> Comments ( {% if comment %}{{ comment.count }}{% else %}0{% endif %} )</a>
-                                    <li><a href="#"><i class="far fa-eye"></i> Views ({{post.views}} )</a>
+                                <li><a href="#"><i class="far fa-comments"></i> Comments ( {% if comment and comment|length > 0 %}{{ comment.count }}{% else %}0{% endif %} )</a></li>                                    <li><a href="#"><i class="far fa-eye"></i> Views ({{post.views}} )</a>
                                 </li>
                             </ul>
                             <h3 class="news-details__title">

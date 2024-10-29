@@ -2171,6 +2171,7 @@ li {
 
 .feature-one__icons-single-text {
     margin: 0;
+    font-size: 15px;
 }
 
 .feature-one__single-first-item {
@@ -2238,6 +2239,7 @@ li {
 .welcome-one__img {
     position: relative;
     display: block;
+    
 }
 
 .welcome-one__img:before {
@@ -2257,6 +2259,7 @@ li {
 .welcome-one__img img {
     width: 100%;
     border-radius: 8px;
+    
 }
 
 .welcome-one__badge {
