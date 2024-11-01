@@ -35,7 +35,7 @@ class Post(models.Model):
     Author = models.CharField(max_length=1000)
     image = ImageField(blank=True, null=True, manual_crop="4:4",)
     title = models.CharField(max_length=1000)
-    content = RichTextField()
+    content = RichTextField(max_length=50)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     tags = TaggableManager()
     status = models.CharField(choices=BLOG_PUBLISH_STATUS, max_length=100, default="in_review")
@@ -74,3 +74,18 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.comment[0:20]
+    
+
+
+class StaticContent(models.Model):
+    SECTION_CHOICES = [
+        ('about_us', 'About Us'),
+        ('mission', 'Our Mission'),
+        ('vision', 'Vision'),
+    ]
+
+    section_name = models.CharField(max_length=100, choices=SECTION_CHOICES, unique=True)
+    content = RichTextField()
+
+    def __str__(self):
+        return self.get_section_name_display()

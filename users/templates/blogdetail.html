@@ -31,16 +31,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-8 col-lg-7">
-{% if messages %}
-<div class="messages">
-    {% for message in messages %}
-        <div class="alert {{ message.tags }}">
-            {{ message }}
-        </div>
-    {% endfor %}
-</div>
-{% endif %}
-                    <div class="news-details__left">
+       <div class="news-details__left">
                         <div class="news-details__img">
                             <img src="assets/images/blog/news-details-img-1.jpg" alt="">
                             <div class="news-details__date-box">
@@ -53,8 +44,7 @@
                                
                                 <li><a href="#"><i class="far fa-user-circle"></i> {{post.category.title}}</a></li>
                                 <li><a href="#"><i class="far fa-user-circle"></i> Posted by {{post.user}}</a></li>
-                                <li><a href="#"><i class="far fa-comments"></i> Comments ( {% if comment %}{{ comment.count }}{% else %}0{% endif %} )</a>
-                                    <li><a href="#"><i class="far fa-eye"></i> Views ({{post.views}} )</a>
+                                <li><a href="#"><i class="far fa-comments"></i> Comments ( {% if comment and comment|length > 0 %}{{ comment.count }}{% else %}0{% endif %} )</a></li>                                    <li><a href="#"><i class="far fa-eye"></i> Views ({{post.views}} )</a>
                                 </li>
                             </ul>
                             <h3 class="news-details__title">
@@ -69,12 +59,12 @@
                                 
                             </div>
                             <div class="author-one__content"> 
-                                <h3>  Author : <b> {{post.author}}</b> </h3>
+                                <h3>  Author : <b> {{post.Author}}</b> </h3>
                             </div>
                         </div>
 
                         <div class="comments-area mb-60 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
-                            <h5 class="comments-title mb-40">Comments</h5>
+                            <h4 class="comments-title mb-40">Comments</h4>
                             {% if comment %}
                             <ul class="comments-list">
                                 {% for c in comment %}
@@ -105,7 +95,15 @@
                             {% endif %}
                            
                         </div>
-                       
+                        {% if messages %}
+                        <div class="messages">
+                            {% for message in messages %}
+                                <div class="alert {{ message.tags }}">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
                         <div class="comment-form">
                             <h3 class="comment-form__title">Leave a Comment</h3>
 

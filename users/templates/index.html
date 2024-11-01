@@ -78,33 +78,80 @@
                 </div>
             </div>
         </section>
+
         <!-- Main Slider End -->
-        <section class="news-two" style="background-image: url('{% static 'assets/images/backgrounds/welcome_one_bg.jpg' %}');">
-            <div class="welcome-one-hands" style="background-image:url('{% static 'assets/images/backgrounds/welcome_one_hands.png' %}');"></div>
+
+        <section class="feature-one">
             <div class="container">
+                <div class="feature-one__inner">
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4">
+                            <!--Three Icon Single-->
+                            <div class="feature-one__single feature-one__single-first-item">
+                                <div class="feature-one__icon-wrap">
+                                   
+                                    <div class="feature-one__icon-text-box">
+                                        <h4>Educating Women <br> for Change</h4>
+                                    </div>
+                                </div>
+                                <p class="feature-one__icons-single-text">Equipping women with essential knowledge in literacy, healthcare, and financial skills, enabling them to overcome challenges and shape their own futures.</p>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4">
+                            <!--Three Icon Single-->
+                            <div class="feature-one__single feature-one__single-first-item">
+                                <div class="feature-one__icon-wrap">
+                                 
+                                    <div class="feature-one__icon-text-box">
+                                        <h4>Supportive Spaces <br> for Women</h4>
+                                    </div>
+                                </div>
+                                <p class="feature-one__icons-single-text">Cultivating a network where women can connect, find support, and inspire each other through our programs like the Goddess Care Initiative.</p>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4">
+                            <!--Three Icon Single-->
+                            <div class="feature-one__single feature-one__single-first-item">
+                                <div class="feature-one__icon-wrap">
+                                    
+                                    <div class="feature-one__icon-text-box">
+                                        <h4>Collaborations with <br> Purpose for Women</h4>
+                                    </div>
+                                </div>
+                                <p class="feature-one__icons-single-text">Partnering with organizations that share our vision, expanding our resources to support and uplift more women and girls.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="welcome-one" style="background-image: url('{% static 'assets/images/backgrounds/welcome_one_bg.jpg' %}');">       
+                 <div class="container" style="margin-top: -90px;">
                 <div class="row">
                     <div class="col-xl-6 col-lg-6">
                         <div class="welcome-one__left">
                             <div class="welcome-one__img wow slideInLeft animated" data-wow-delay="100ms" style="visibility: visible; animation-delay: 100ms; animation-name: slideInLeft;">
                                 <img src="{% static 'assets/images/resources/welcome_one_img_1.png' %}" alt="">
                                 <div class="welcome-one__badge">
-                                    <img src="{% static 'assets/images/resources/welcome_one_badge.png' %}" alt="">
+                                    <img src="{% static 'assets/images/resources/' %}" alt="">
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-6 col-lg-6">
+                    <div class="col-xl-6 col-lg-6" >
                         <div class="welcome-one__right">
                             <div class="block-title text-left">
                                 <h4>About us</h4>
                                 <h2>Empowering Women, Transforming Lives</h2>
                             </div>
-                            <p class="welcome-one__text2">Kenyan Feminine Goddess is more than just a platform; it offers unwavering support and inspiration for women in our communities. We create spaces for women to connect, share experiences, and gain practical knowledge and confidence to tackle challenges like illiteracy, hunger, and poor healthcare. Through the Goddess Care Initiative and strategic partnerships, we aim to empower women and young girls to embrace personal growth and unlock their full potential</p>
-                            <ul class="welcome-one__list list-unstyled">
-                                <li><span class="icon-confirmation"></span>Addressing Critical Social Issues</li>
-                                <li><span class="icon-confirmation"></span>Empowerment and Support</li>
-                                <li><span class="icon-confirmation"></span>Community Building</li>
-                            </ul>
+                            {% if about_us %}
+       
+                            <p class="welcome-one__text2">{{ about_us.content | safe }}</p>
+                            {% else %}
+                            <p class="welcome-one__text2">Update About us content in the Admin (Edit profile sectio)</p>
+                        {% endif %}
+                           
+                          
                           
                         </div>
                     </div>
@@ -115,33 +162,44 @@
      
   
         <!--Charity Activity Start-->
-        <section class="charity-activity" style="margin-top:50px;">
-            <div class="charity-activity-map" style="background-image: url({% static 'assets/images/map/charity_activity_map.png' %})">
-            </div>
+      
+        <!--Charity Activity End-->
+        <section class="make-donation-two">
             <div class="container">
                 <div class="row">
-                 
-                    <div class="col-xl-7 col-lg-7">
-                        <div class="charity-activity__right">
-                            <div class="charity-activity__right-content">
-                                <h2>Our Mission</h2>
-                                <p>To establish a platform for women and young girls to engage with like-minded actors
-                                    targeting rural and marginalized communities to develop long term and sustainable
-                                    solutions to alleviate their social mobility opportunities.</p>
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="make-donation-two__left">
+                            <div class="block-title text-left">
+                               <h4>Our Mission</h4>
+                               <h2>Advancing Opportunities for Women and Girls</h2>
                             </div>
+                            {% if mission %}
+                            <p class="make-donation-two__text">{{ mission.content | safe }}</p>
+                                {% else %}
+                                <p class="make-donation-two__text">Update mission content in the Admin Edit profile section</p>
+                                {% endif %}
+                         
                         </div>
                     </div>
-                    <div class="col-xl-5 col-lg-5">
-                        <div class="charity-activity__left">
-                            <div class="charity-activity__img">
-                                <img src="{% static 'assets/images/resources/charity_activity_img.jpg' %}" alt="">
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="make-donation-two__right">
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6">
+                                    <div class="make-donation-two__single-img">
+                                        <img src="{% static 'assets/images/resources/make-donation-two-img-1.jpg' %}" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6">
+                                    <div class="make-donation-two__single-img">
+                                        <img src="{% static 'assets/images/resources/make-donation-two-img-2.jpg' %}" alt="">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!--Charity Activity End-->
         <section class="become-volunteer">
             <div class="container">
                 <div class="row">
@@ -161,35 +219,7 @@
                                 <p class="become-volunteer__text">A society where women and children are devoid of hunger, have access to quality
                                     healthcare and empowered to pursue academic goals safeguarding their human rights
                                     and dignity.
-                                <!-- <ul class="list-unstyled become-volunteer__requirements-list">
-                                    <li>
-                                        <div class="become-volunteer__requirements-icon">
-                                            <span class="icon-confirmation"></span>
-                                        </div>
-                                        <div class="become-volunteer__requirements-text">
-                                            <p>Nsectetur cing do not elit.</p>
-                                        </div>
-
-                                    </li>
-                                    <li>
-                                        <div class="become-volunteer__requirements-icon">
-                                            <span class="icon-confirmation"></span>
-                                        </div>
-                                        <div class="become-volunteer__requirements-text">
-                                            <p>Suspe ndisse suscipit sagittis in leo.</p>
-                                        </div>
-
-                                    </li>
-                                    <li>
-                                        <div class="become-volunteer__requirements-icon">
-                                            <span class="icon-confirmation"></span>
-                                        </div>
-                                        <div class="become-volunteer__requirements-text">
-                                            <p>Entum estibulum dignissim lipsm posuere.</p>
-                                        </div>
-
-                                    </li>
-                                </ul> -->
+                                
                             </div>
                         </div>
                     </div>

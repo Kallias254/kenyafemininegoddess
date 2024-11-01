@@ -1,0 +1,116 @@
+{% extends 'basemain.html' %}
+{% load static  %}
+
+{% block content %}
+
+<div class="page-wrapper">
+
+
+   
+    <!--Page Header Start-->
+    <section class="page-header" style="background-image: url('{% static 'assets/images/backgrounds/page-header-bg.jpg' %}');">
+        <div class="container">
+            <div class="page-header__inner">
+            
+              
+            </div>
+        </div>
+    </section>
+    <!--Page Header End-->
+
+    <!--Contact Page Start-->
+    <section class="contact-page">
+        <div class="container">
+            <div class="block-title text-center">
+                <h4> Quesitons?</h4>
+                <h2>Contact  Us</h2>
+            </div>
+            <div class="row">
+                <div class="col-xl-8">
+                    <div class="contact-form">
+                        <form action="" class="contact-form-validated contact-one__form" novalidate="novalidate">
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <div class="contact-form__input-box">
+                                        <input type="text" placeholder="Your name" name="name">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="contact-form__input-box">
+                                        <input type="email" placeholder="Email address" name="email">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <div class="contact-form__input-box">
+                                        <input type="text" placeholder="Phone number" name="phone">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="contact-form__input-box">
+                                        <input type="email" placeholder="Subject" name="Subject">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="contact-form__input-box">
+                                        <textarea name="message" placeholder="Write message"></textarea>
+                                    </div>
+                                    <button type="submit" class="thm-btn contact-form__btn">Send Message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-xl-4 d-flex align-items-stretch">
+                    <div class="contact-page__info-box">
+                        <div class="contact-page__info-box-address">
+                            <h4 class="contact-page__info-box-tilte">Location</h4>
+                            <p class="contact-page__info-box-address-text">Ring Road Kileleshwa  <br> Nairobi, Kenya
+                                </p>
+                        </div>
+                        <div class="contact-page__info-box-phone">
+                            <h4 class="contact-page__info-box-tilte">Phone</h4>
+                            <p class="contact-page__info-box-phone-number">
+                                <a href="tel:+447498557652">  +447498557652</a>
+
+                                <br>
+                                <a href="tel:+254-712-402-483">+254 712 402 483</a>
+                              
+                            </p>
+                        </div>
+                        <div class="contact-page__info-box-email">
+                            <h4 class="contact-page__info-box-tilte">Email</h4>
+                            <p class="contact-page__info-box-email-address">
+                                <a href="kenyanfemininegoddess@gmail.com">kenyanfemininegoddess@gmail.com</a>
+                                
+                            </p>
+                        </div>
+                        <div class="contact-page__info-box-follow">
+                            <h4 class="contact-page__info-box-tilte">Follow</h4>
+                            <div class="contact-page__info-box-follow-social">
+                                <a href="https://twitter.com/kefegod" target="_blank"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="clr-fb"><i class="fab fa-facebook-square"></i></a>
+
+                                <a href="https://www.instagram.com/kenyan_feminine_goddess" target="_blank" class="clr-ins"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Contact Page End-->
+
+    <!--Site Footer One Start-->
+   
+
+
+
+</div>
+
+{% include 'footer.html' %}
+
+    {% endblock %}

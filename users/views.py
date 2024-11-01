@@ -1,19 +1,24 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
+from . models import Editpage
 
 from django.shortcuts import render,redirect,HttpResponse
 from django.http import Http404
 
 
-
-
-
-
-
 def home(request):
-    
-    return render(request, 'index.html')
+    about_us = Editpage.objects.filter(section_name='about_us').first()
+    mission = Editpage.objects.filter(section_name='mission').first()
+    vision = Editpage.objects.filter(section_name='vision').first()
+
+    content = {
+        'about_us': about_us,
+        'mission': mission,
+        'vision': vision,
+    }
+    print("Static Content for About Us:", Editpage.objects.filter(section_name='About Us').all())
+    return render(request, 'index.html', content)
 
 def aboutus(request):
     
