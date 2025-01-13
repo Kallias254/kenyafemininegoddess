@@ -10,8 +10,13 @@
                         <div class="footer-widget__logo">
                             <a href="index.html"><img src="{% static 'assets/images/resources/log.png' %}" alt="" style="width: 200px; height: auto;"></a>
                         </div>
-                        <p class="footer-widget__text">Kenyan Feminine Goddess is a dedicated platform designed to inspire and empower women during times of uncertainty, despair, and turmoil. Through shared experiences, profound insights, and timeless wisdom, we aim to provide valuable support and inspiration to women.</p>
-                        <div class="site-footer__social">
+                        {% if footer %}
+       
+                        <p class="welcome-one__text2">{{ footer.content | safe }}</p>
+                        {% else %}
+                        <p class="welcome-one__text2">Update Footer content in the Admin Edit Profile Section</p>
+                    {% endif %}                      
+                      <div class="site-footer__social">
                             <a href="https://twitter.com/kefegod" target="_blank"><i class="fab fa-twitter"></i></a>
                             <a href="#" class="clr-fb"><i class="fab fa-facebook-square"></i></a>
                             <a href="https://www.instagram.com/kenyan_feminine_goddess"  target="_blank" class="clr-ins"><i class="fab fa-instagram"></i></a>
@@ -37,7 +42,7 @@
                                     <i class="fas fa-envelope"></i>
                                 </div>
                                 <div class="text">
-                                    <p><a href="mailto:kenyanfemininegoddess@gmail.com">kenyanfemininegoddess@gmail.com</a></p>
+                                    <p><a href="mailto:info@kenyanfemininegoddess.org">info@kenyanfemininegoddess.org</a></p>
                                 </div>
                             </li>
                             <li>

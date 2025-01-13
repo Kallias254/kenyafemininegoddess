@@ -21,13 +21,27 @@ class Profile(models.Model):
     
 class Editpage(models.Model):
     SECTION_CHOICES = [
-        ('about_us', 'About Us'),
-        ('mission', 'Our Mission'),
-        ('vision', 'Vision'),
+        ('h1', 'Home | Heading 1'),
+        ('h2', 'Home | Heading 2'),
+        ('h3', 'Home | Heading 3'),
+        ('about_us', 'Home | About Us'),
+        ('mission', 'Home | Our Mission'),
+        ('vision', 'Home | Our Vision'),
+        ('Volunteer', 'Home | Volunteer'),
+        ('footer', 'Home | Footer'),
+        ('aboutUs', 'About Us | About Us'),
+        ('our_Programs', 'Our Programs | Goddess Care Initiative'),
+        ('reach', 'Our Programs | Our Reach '),
+        ('team1', 'Our Team | Kelly'),
+        ('team2', 'Our Team | Elsie'),
+        ('team3', 'Our Team | Loise'),
+
     ]
 
     section_name = models.CharField(max_length=100, choices=SECTION_CHOICES, unique=True)
-    content = RichTextField()
+    heading = RichTextField(max_length=35, blank=True)
+    content = RichTextField() 
+    
 
     def __str__(self):
         return self.get_section_name_display()

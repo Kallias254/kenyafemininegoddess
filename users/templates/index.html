@@ -34,9 +34,20 @@
                             <div class="swiper-slide__inner">
                                 <div class="row">
                                     <div class="col-xl-12">
-                                        <p>Nurturing Communities</p>
-                                        <h2>One Woman <br> at a Time.</h2>
-                                        <a href="about.html" class="thm-btn">Learn More</a>
+                                        {% if h1 %}
+                            <p class="">{{ h1.heading | safe }}</p>
+                                {% else %}
+                                <p class="">small title here </p>
+                                {% endif %}
+
+                                        {% if h1 %}
+                            <h2 class="">{{ h1.content | safe }}</h2>
+                                {% else %}
+                                <h2 class="">Big title here</h2>
+                                {% endif %}
+                           
+                               
+                                        <a href="{% url 'users:aboutus' %}" class="thm-btn">Learn More</a>
                                     </div>
                                 </div>
                             </div>
@@ -49,9 +60,18 @@
                             <div class="swiper-slide__inner">
                                 <div class="row">
                                     <div class="col-xl-12">
-                                        <p>Elevating Women,</p>
-                                        <h2> Uplifting Communities. </h2>
-                                        <a href="about.html" class="thm-btn">Learn More</a>
+                                        {% if h2 %}
+                                        <p class="">{{ h2.heading | safe }}</p>
+                                            {% else %}
+                                            <p class="">small title here </p>
+                                            {% endif %}
+            
+                                                    {% if h2 %}
+                                        <h2 class="">{{ h2.content | safe }}</h2>
+                                            {% else %}
+                                            <h2 class="">Big title here</h2>
+                                            {% endif %}
+                                        <a href="{% url 'users:aboutus' %}" class="thm-btn">Learn More</a>
                                     </div>
                                 </div>
                             </div>
@@ -64,9 +84,18 @@
                             <div class="swiper-slide__inner">
                                 <div class="row">
                                     <div class="col-xl-12">
-                                        <p>Helping Them Today</p>
-                                        <h2>We Can Make <br> A Difference</h2>
-                                        <a href="about.html" class="thm-btn">Learn More</a>
+                                        {% if h3 %}
+                                        <p class="">{{ h3.heading | safe }}</p>
+                                            {% else %}
+                                            <p class="">small title here </p>
+                                            {% endif %}
+            
+                                                    {% if h3 %}
+                                        <h2 class="">{{ h3.content | safe }}</h2>
+                                            {% else %}
+                                            <h2 class="">Big title here</h2>
+                                            {% endif %}
+                                        <a href="{% url 'users:aboutus' %}" class="thm-btn">Learn More</a>
                                     </div>
                                 </div>
                             </div>
@@ -86,7 +115,6 @@
                 <div class="feature-one__inner">
                     <div class="row">
                         <div class="col-xl-4 col-lg-4">
-                            <!--Three Icon Single-->
                             <div class="feature-one__single feature-one__single-first-item">
                                 <div class="feature-one__icon-wrap">
                                    
@@ -98,7 +126,6 @@
                             </div>
                         </div>
                         <div class="col-xl-4 col-lg-4">
-                            <!--Three Icon Single-->
                             <div class="feature-one__single feature-one__single-first-item">
                                 <div class="feature-one__icon-wrap">
                                  
@@ -110,7 +137,6 @@
                             </div>
                         </div>
                         <div class="col-xl-4 col-lg-4">
-                            <!--Three Icon Single-->
                             <div class="feature-one__single feature-one__single-first-item">
                                 <div class="feature-one__icon-wrap">
                                     
@@ -130,7 +156,7 @@
                 <div class="row">
                     <div class="col-xl-6 col-lg-6">
                         <div class="welcome-one__left">
-                            <div class="welcome-one__img wow slideInLeft animated" data-wow-delay="100ms" style="visibility: visible; animation-delay: 100ms; animation-name: slideInLeft;">
+                            <div class="welcome-one__img " data-wow-delay="100ms" style="visibility: visible; animation-delay: 100ms; animation-name: slideInLeft;">
                                 <img src="{% static 'assets/images/resources/welcome_one_img_1.png' %}" alt="">
                                 <div class="welcome-one__badge">
                                     <img src="{% static 'assets/images/resources/' %}" alt="">
@@ -142,13 +168,18 @@
                         <div class="welcome-one__right">
                             <div class="block-title text-left">
                                 <h4>About us</h4>
-                                <h2>Empowering Women, Transforming Lives</h2>
+                                {% if about_us %}
+       
+                                <h2 class="">{{ about_us.heading | safe }}</h2>
+                                {% else %}
+                                <h2 class="">Update About us heading the Admin (Edit Pages sectio)</h2>
+                            {% endif %}
                             </div>
                             {% if about_us %}
        
                             <p class="welcome-one__text2">{{ about_us.content | safe }}</p>
                             {% else %}
-                            <p class="welcome-one__text2">Update About us content in the Admin (Edit profile sectio)</p>
+                            <p class="welcome-one__text2">Update About us content in the Admin (Edit Pages sectio)</p>
                         {% endif %}
                            
                           
@@ -171,12 +202,17 @@
                         <div class="make-donation-two__left">
                             <div class="block-title text-left">
                                <h4>Our Mission</h4>
-                               <h2>Advancing Opportunities for Women and Girls</h2>
+                               {% if mission %}
+       
+                               <h2 class="">{{ mission.heading | safe }}</h2>
+                               {% else %}
+                               <h2 class="">Update Mission heading the Admin (Edit Pages section)</h2>
+                           {% endif %}
                             </div>
                             {% if mission %}
                             <p class="make-donation-two__text">{{ mission.content | safe }}</p>
                                 {% else %}
-                                <p class="make-donation-two__text">Update mission content in the Admin Edit profile section</p>
+                                <p class="make-donation-two__text">Update Mission content in the Admin Edit Pages section</p>
                                 {% endif %}
                          
                         </div>
@@ -214,12 +250,22 @@
                     </div>
                     <div class="col-xl-7 col-lg-7">
                         <div class="become-volunteer__right">
-                            <div class="become-volunteer__requirements">
-                                <h3>Our Vision </h3>
-                                <p class="become-volunteer__text">A society where women and children are devoid of hunger, have access to quality
-                                    healthcare and empowered to pursue academic goals safeguarding their human rights
-                                    and dignity.
-                                
+                            <div class="make-donation-two__left">
+                                <div class="block-title text-left">
+                                   <h4>Our Vision</h4>
+                                   {% if vision %}
+           
+                                   <h2 class="">{{ vision.heading | safe }}</h2>
+                                   {% else %}
+                                   <h2 class="">Update Vision heading the Admin (Edit Pages section)</h2>
+                               {% endif %}
+                                </div>
+                                {% if vision %}
+                                <p class="make-donation-two__text">{{ vision.content | safe }}</p>
+                                    {% else %}
+                                    <p class="make-donation-two__text">Update Vision content in the Admin Edit Pages section</p>
+                                    {% endif %}
+                             
                             </div>
                         </div>
                     </div>
@@ -237,8 +283,13 @@
                             <div class="col-xl-9">
                                 <div class="cta-one__inner">
                                     <div class="cta-one__text">
-                                        <p>If you share our vision and passion for creating change, we invite you to join us on 
-                                            this incredible journey. Whether you’re a volunteer, donor, or partner, together we can make a tangible difference.</p>
+                                        {% if volunteer %}
+       
+                            <p class="welcome-one__text2">{{ volunteer.content | safe }}</p>
+                            {% else %}
+                            <p class="welcome-one__text2">Update Volunteer content in the Admin Edit Profile Section</p>
+                        {% endif %}
+                                       
                                         
                                     </div>
                                    
@@ -246,7 +297,7 @@
                             </div>  
                         <div class="col-xl-3">
                             <div class="cta-one__btn">
-                                <a href="become-volunteer.html" class="thm-btn">Get Involved Now</a>
+                                <a href="" class="thm-btn">Get Involved Now</a>
                             </div>
                         </div>
                     </div>
@@ -291,7 +342,7 @@
             <ul class="mobile-nav__contact list-unstyled">
                 <li>
                     <i class="fas fa-envelope"></i>
-                    <a href="kenyanfemininegoddess@gmail.com">kenyanfemininegoddess@gmail.com</a>
+                    <a href="info@kenyanfemininegoddess.org">info@kenyanfemininegoddess.org</a>
                 </li>
                 <li>
                     <i class="fas fa-phone-square-alt"></i>
