@@ -21,9 +21,9 @@ class Profile(models.Model):
     
 class Editpage(models.Model):
     SECTION_CHOICES = [
-        ('h1', 'Home | Heading 1'),
-        ('h2', 'Home | Heading 2'),
-        ('h3', 'Home | Heading 3'),
+        ('hnew', 'Home | heading 1'),
+        ('hneww', 'Home | Heading 2'),
+        ('hnewww', 'Home | Heading 3'),
         ('about_us', 'Home | About Us'),
         ('mission', 'Home | Our Mission'),
         ('vision', 'Home | Our Vision'),
