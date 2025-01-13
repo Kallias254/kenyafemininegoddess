@@ -253,17 +253,17 @@
                             <div class="make-donation-two__left">
                                 <div class="block-title text-left">
                                    <h4>Our Vision</h4>
+
                                    {% if vision %}
-           
                                    <h2 class="">{{ vision.heading | safe }}</h2>
                                    {% else %}
                                    <h2 class="">Update Vision heading the Admin (Edit Pages section)</h2>
-                               {% endif %}
+                                    {% endif %}
                                 </div>
-                                {% if vision %}
-                                <p class="make-donation-two__text">{{ vision.content | safe }}</p>
+                                    {% if vision %}
+                                    <p class="make-donation-two__text">{{ vision.content | safe }}</p>
                                     {% else %}
-                                    <p class="make-donation-two__text">Update Vision content in the Admin Edit Pages section</p>
+                                        <p class="make-donation-two__text">Update Vision content in the Admin Edit Pages section</p>
                                     {% endif %}
                              
                             </div>
