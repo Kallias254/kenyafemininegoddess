@@ -12,23 +12,19 @@
                     <img src="{% static 'assets/images/event/event-detials-img-1.jpg' %}" alt="">
                 </div>
             </div>
+            
             <div class="col-xl-6 col-lg-6">
                 <div class="event-details-top__contant">
-      
-
-                {% if our_Programs %}
-
-                    <h3 class="event-details-top__title">{{ our_Programs.heading | safe }}</h3>
-                    {% else %}
-                    <h3 class="event-details-top__title">Update Programs Heading in the Admin Edit Profile Section</h3>
+                    {% if our_programs %}
+                    <h3 class="event-details-top__title">{{ our_programs.heading | safe }}</h3>
+                    <p class="event-details-top__text-one">{{ our_programs.content | safe }}</p>
+                {% else %}
+                    <h3 class="event-details-top__title">No Programs available at the moment.</h3>
+                    <p class="event-details-top__text-one">Please update Programs content in the Admin Edit Profile Section.</p>
                 {% endif %}
+                
 
-                {% if our_Programs %}
-
-                <p class="event-details-top__text-one">{{ our_Programs.content | safe }}</p>
-                    {% else %}
-                 <p class="event-details-top__text-one">Update Programs content in the Admin Edit Profile Section</p>
-                {% endif %}
+            
                 </div>
             </div>
         </div>
@@ -46,13 +42,12 @@
                     <h3 class="event-details-bottom__venue-title">Our Reach</h3>
                     <ul class="list-unstyled">
                       
-                        <li>Lugari Sub County, Kenya</li>
                     </ul>
-                    {% if our_Programs %}
-
-                <p class="event-details-bottom__venue-text">{{ reach.content | safe }}</p>
+                    {% if reach %}
+                    <h2 class="event-details-bottom__venue-text">{{ reach.heading | safe }}</h2>
+                <p class="event-details-bottom__venue-text"> {{ reach.content | safe }} </p>
                     {% else %}
-                 <p class="event-details-bottom__venue-text">Update Programs content in the Admin Edit Profile Section</p>
+                 <p class="event-details-bottom__venue-text">Update Programs Reach content in the Admin Edit Profile Section</p>
                 {% endif %}
                     
                    

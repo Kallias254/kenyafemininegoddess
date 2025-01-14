@@ -11,15 +11,12 @@
             <div class="col-xl-6 col-lg-6">
                 <div class="make-donation-two__left">
                     <div class="block-title text-left">
-                        {% if aboutUs %}
+                 {% if aboutUs %}
        
                         <h2 class="welcome-one__text2">{{ aboutUs.heading | safe }}</h2>
-                        {% else %}
-                        <h2 class="">Update About us Heading in the Admin Edit Pages Section</h2>
-                 
-                        {% endif %}
+                      
                     </div>
-                    {% if aboutUs %}
+                
                     <p class="make-donation-two__text">{{ aboutUs.content | safe }}</p>
                     {% else %}
                     <p class="make-donation-two__text">Update About us Content in the Admin Edit Pages Section</p>

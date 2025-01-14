@@ -34,23 +34,23 @@
                             <div class="swiper-slide__inner">
                                 <div class="row">
                                     <div class="col-xl-12">
-                              {% if hnew %}
-                            <p class="">{{ hnew.heading | safe }}</p>
-                                {% else %}
-                                <p class="">small title here </p>
-                                {% endif %}
+                                    
+                                        {% if hnew %}
+                                        <p class="">{{ hnew.heading | safe }}</p>
+                             
+                                        <h2 class="">{{ hnew.content | safe }}</h2>
+                                    {% else %}
+                                   
+                                        <h2 class="">Update About us heading the Admin (Edit Pages section)</h2>
+                                    {% endif %}
 
-                              {% if hnew %}
-                            <h2 class="">{{ hnew.content | safe }}</h2>
-                                {% else %}
-                                <h2 class="">Big title here</h2>
-                                {% endif %}
                            
                                
                                         <a href="{% url 'users:aboutus' %}" class="thm-btn">Learn More</a>
                                     </div>
                                 </div>
                             </div>
+                         
                         </div>
                     </div>
                     <div class="swiper-slide">
@@ -86,11 +86,11 @@
                                     <div class="col-xl-12">
                                         {% if hnewww %}
                                         <p class="">{{ hneww.heading | safe }}</p>
-                                            {% else %}
+                                     {% else %}
                                             <p class="">small title here </p>
-                                            {% endif %}
+                                  {% endif %}
             
-                                                    {% if hnewww %}
+                                         {% if hnewww %}
                                         <h2 class="">{{ hnewww.content | safe }}</h2>
                                             {% else %}
                                             <h2 class="">Big title here</h2>
@@ -117,35 +117,38 @@
                         <div class="col-xl-4 col-lg-4">
                             <div class="feature-one__single feature-one__single-first-item">
                                 <div class="feature-one__icon-wrap">
-                                   
+                                    {% if Programme1 %}
                                     <div class="feature-one__icon-text-box">
-                                        <h4>Educating Women <br> for Change</h4>
+                                        <h4>{{Programme1.heading | safe }}</h4>
                                     </div>
                                 </div>
-                                <p class="feature-one__icons-single-text">Equipping women with essential knowledge in literacy, healthcare, and financial skills, enabling them to overcome challenges and shape their own futures.</p>
+                                <p class="feature-one__icons-single-text">{{Programme1.content | safe }}</p>
                             </div>
+                            {% endif %}
                         </div>
                         <div class="col-xl-4 col-lg-4">
                             <div class="feature-one__single feature-one__single-first-item">
                                 <div class="feature-one__icon-wrap">
-                                 
+                                    {% if Programme2 %}
                                     <div class="feature-one__icon-text-box">
-                                        <h4>Supportive Spaces <br> for Women</h4>
+                                        <h4>{{Programme2.heading | safe }}</h4>
                                     </div>
                                 </div>
-                                <p class="feature-one__icons-single-text">Cultivating a network where women can connect, find support, and inspire each other through our programs like the Goddess Care Initiative.</p>
+                                <p class="feature-one__icons-single-text">{{Programme2.content | safe }}</p>
                             </div>
+                            {% endif %}
                         </div>
                         <div class="col-xl-4 col-lg-4">
                             <div class="feature-one__single feature-one__single-first-item">
                                 <div class="feature-one__icon-wrap">
-                                    
+                                    {% if Programme3 %}
                                     <div class="feature-one__icon-text-box">
-                                        <h4>Collaborations with <br> Purpose for Women</h4>
+                                        <h4>{{Programme3.heading | safe }}</h4>
                                     </div>
                                 </div>
-                                <p class="feature-one__icons-single-text">Partnering with organizations that share our vision, expanding our resources to support and uplift more women and girls.</p>
+                                <p class="feature-one__icons-single-text">{{Programme3.content | safe }}</p>
                             </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
