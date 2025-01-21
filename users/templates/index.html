@@ -219,9 +219,11 @@
                         <div class="make-donation-two__left">
                             <div class="block-title text-left">
                                {% if about_us %}  
-                               <h2>About Us</h2>
+                               <h4>
+                            About Us
+                               </h4>
                                <br>
-                               <h4 class="">{{ about_us.heading | safe }}</h4>
+                               <h2 class=""> {{ about_us.heading | safe }} </h2>
                                {% else %}
                                <h2 class="">Update Abot us heading  in Edit Pages</h2>
                            {% endif %}
@@ -250,7 +252,7 @@
             </div>
         </section>
         <!--Charity Activity End-->
-        <section class="make-donation-two" style="margin-top: -160px;" >
+        <section class="make-donation-two" style="margin-top: -180px;" >
             <div class="container">
                 <div class="row">
                     <div class="col-xl-5 col-lg-5">
@@ -274,8 +276,10 @@
                         <div class="make-donation-two__left">
                             <div class="block-title text-left">
                                {% if mission %}
-       
-                               <h4 class="">{{ mission.heading | safe }}</h4>
+                               <h4>
+                               Oue Mission
+                                   </h4>
+                               <h2 class="">{{ mission.heading | safe }}</h2>
                                {% else %}
                                <h2 class="">Update Mission heading (Edit Pages )</h2>
                            {% endif %}
@@ -308,9 +312,9 @@
                         <div class="become-volunteer__right">
                             <div class="make-donation-two__left">
                                 <div class="block-title text-left">
-
+                                  <h4>Our Vision</h4>
                                    {% if vision %}
-                                   <h4 class="">{{ vision.heading | safe }}</h4>
+                                   <h2 class="">{{ vision.heading | safe }}</h2>
                                    {% else %}
                                    <h2 class="">Update Vision heading (Edit Pages )</h2>
                                     {% endif %}
