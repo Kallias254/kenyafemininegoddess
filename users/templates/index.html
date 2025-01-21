@@ -332,8 +332,6 @@
             </div>
         </section>
    
-
-        <!--CTA One Start-->
         <section class="cta-one" style="background-image: url({% static 'assets/images/backgrounds/cta-one-bg.png' %})">
             <div class="container">
                 <div class="row">
@@ -342,11 +340,11 @@
                             <div class="col-xl-9">
                                 <div class="cta-one__inner">
                                     <div class="cta-one__text">
-                                        {% if Volunteer %}
-       
-                            <p class="welcome-one__text2">{{ Volunteer.content | safe }}</p>
+                                        {% if volunteer %}
+        
+                            <p class="welcome-one__text2">{{ volunteer.content | safe }}</p>
                             {% else %}
-                            <p class="welcome-one__text2">Update Volunteer content in Edit Profile Section</p>
+                            <p class="welcome-one__text2">Update Volunteer content in the Admin Edit Profile Section</p>
                         {% endif %}
                                        
                                         
@@ -364,10 +362,6 @@
                 </div>
             </div>
         </section>
-        <!--CTA One End-->
-
-    
-
 
 
 
