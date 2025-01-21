@@ -1350,10 +1350,10 @@ li {
     position: relative;
     display: inline-block;
     margin: 0;
-    font-size: 40px;
+    font-size: 30px;
     color: #ffffff;
-    font-family: var(--thm-font-shadows);
-    line-height: 50px;
+    font-family: var(--thm-font);
+    line-height: 0px;
     opacity: 0;
     -webkit-transform: translateY(-120px);
     transform: translateY(-120px);
@@ -1383,8 +1383,8 @@ li {
     margin-top: 10px;
     margin-bottom: 41px;
     color: #fff;
-    font-size: 110px;
-    line-height: 120px;
+    font-size: 90px;
+    line-height: 70px;
     opacity: 0;
     visibility: hidden;
     -webkit-transform: translateY(90px);

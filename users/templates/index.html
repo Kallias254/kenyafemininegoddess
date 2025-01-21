@@ -30,22 +30,22 @@
                     <div class="swiper-slide">
                         <div class="image-layer"
                         style="background-image: url('{% static 'assets/images/main-slider/slider-2-1.jpg' %}');"></div>
+                        <br>
                         <div class="container">
                             <div class="swiper-slide__inner">
                                 <div class="row">
                                     <div class="col-xl-12">
-                                    
                                         {% if hnew %}
-                                        <p class="">{{ hnew.heading | safe }}</p>
-                             
+                                        <p class="">{{ hnew.heading | safe }} </p>
+                                            {% else %}
+                                            <p class="">small title here </p>
+                                            {% endif %}
+            
+                                                    {% if hnew %}
                                         <h2 class="">{{ hnew.content | safe }}</h2>
-                                    {% else %}
-                                   
-                                        <h2 class="">Update About us heading (Edit Pages )</h2>
-                                    {% endif %}
-
-                           
-                               
+                                            {% else %}
+                                            <h2 class="">Big title here</h2>
+                                            {% endif %}
                                         <a href="{% url 'users:aboutus' %}" class="thm-btn">Learn More</a>
                                     </div>
                                 </div>
@@ -56,12 +56,13 @@
                     <div class="swiper-slide">
                         <div class="image-layer"
                             style="background-image: url('{% static 'assets/images/main-slider/slider-2-2.jpg' %}');"></div>
-                        <div class="container">
+                            <br>
+                            <div class="container">
                             <div class="swiper-slide__inner">
                                 <div class="row">
                                     <div class="col-xl-12">
                                         {% if hneww %}
-                                        <p class="">{{ hneww.heading | safe }}</p>
+                                        <p class="">{{ hneww.heading | safe }} </p>
                                             {% else %}
                                             <p class="">small title here </p>
                                             {% endif %}
@@ -80,18 +81,21 @@
                     <div class="swiper-slide">
                         <div class="image-layer"
                             style="background-image: url('{% static 'assets/images/main-slider/slider-2-1.jpg' %}');"></div>
-                        <div class="container">
+                            <br>
+                            <div class="container">
                             <div class="swiper-slide__inner">
                                 <div class="row">
                                     <div class="col-xl-12">
                                         {% if hnewww %}
-                                        <h2 class="">{{ hneww.heading | safe }}</h2>
+
+                                        <h2 class="">{{ hneww.heading  }} </h2>
+
                                      {% else %}
-                                            <h2 class="">small title here </h22>
+                                            <h2 class="">small title here </h2>
                                   {% endif %}
             
                                          {% if hnewww %}
-                                        <h2 class="">{{ hnewww.content | safe }}</h2>
+                                        <h2 class=""> {{ hnewww.content | safe }}</h2>
                                             {% else %}
                                             <h2 class="">Big title here</h2>
                                             {% endif %}
@@ -119,10 +123,10 @@
                                 <div class="feature-one__icon-wrap">
                                     {% if Programme1 %}
                                     <div class="feature-one__icon-text-box">
-                                        <h4 class=""> <strong>{{Programme1.heading | safe }}</strong> </h4>
+                                        <h4 class=""> <strong>{{ Programme1.heading | safe }}</strong> </h4>
                                     </div>
                                 </div>
-                                <p class="feature-one__icons-single-text">{{Programme1.content | safe }}</p>
+                                <p class="feature-one__icons-single-text">{{ Programme1.content | safe }}</p>
                             </div>
                             {% endif %}
                         </div>
@@ -131,10 +135,10 @@
                                 <div class="feature-one__icon-wrap">
                                     {% if Programme2 %}
                                     <div class="feature-one__icon-text-box">
-                                        <h4> <strong>{{Programme2.heading | safe }}</strong> </h4>
+                                        <h4> <strong> {{ Programme2.heading | safe }} </strong> </h4>
                                     </div>
                                 </div>
-                                <p class="feature-one__icons-single-text">{{Programme2.content | safe }}</p>
+                                <p class="feature-one__icons-single-text">{{ Programme2.content | safe }}</p>
                             </div>
                             {% endif %}
                         </div>
@@ -143,7 +147,7 @@
                                 <div class="feature-one__icon-wrap">
                                     {% if Programme3 %}
                                     <div class="feature-one__icon-text-box">
-                                        <h4> <strong>{{Programme3.heading | safe }}</strong> </h4>
+                                        <h4> <strong> {{ Programme3.heading | safe }} </strong> </h4>
                                     </div>
                                 </div>
                                 <p class="feature-one__icons-single-text">{{Programme3.content | safe }}</p>
