@@ -43,7 +43,7 @@ class Editpage(models.Model):
     ]
 
     section_name = models.CharField(max_length=100, choices=SECTION_CHOICES, unique=True)
-    heading = RichTextField(max_length=35, blank=True)
+    heading = RichTextField()
     content = RichTextField() 
     
 

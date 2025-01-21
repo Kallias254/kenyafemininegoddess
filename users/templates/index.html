@@ -41,7 +41,7 @@
                                         <h2 class="">{{ hnew.content | safe }}</h2>
                                     {% else %}
                                    
-                                        <h2 class="">Update About us heading the Admin (Edit Pages section)</h2>
+                                        <h2 class="">Update About us heading (Edit Pages )</h2>
                                     {% endif %}
 
                            
@@ -155,69 +155,22 @@
             </div>
         </section>
         <section class="welcome-one" style="background-image: url('{% static 'assets/images/backgrounds/welcome_one_bg.jpg' %}');">       
-                 <div class="container" style="margin-top: -90px;">
+                 <div class="container" style="margin-top: -200px;">
                 <div class="row">
                     <div class="col-xl-6 col-lg-6">
-                        <div class="welcome-one__left">
-                            <div class="welcome-one__img " data-wow-delay="100ms" style="visibility: visible; animation-delay: 100ms; animation-name: slideInLeft;">
-                                <img src="{% static 'assets/images/resources/welcome_one_img_1.png' %}" alt="">
-                                <div class="welcome-one__badge">
-                                    <img src="{% static 'assets/images/resources/' %}" alt="">
+                        <div class="make-donation-two__right">
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6">
+                                    <div class="make-donation-two__single-img">
+                                        <img src="{% static 'assets/images/resources/make-donation-two-img-1.jpg' %}" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6">
+                                    <div class="make-donation-two__single-img">
+                                        <img src="{% static 'assets/images/resources/make-donation-two-img-2.jpg' %}" alt="">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-6" >
-                        <div class="welcome-one__right">
-                            <div class="block-title text-left">
-                                <h4>About us</h4>
-                                {% if about_us %}
-       
-                                <h2 class="">{{ about_us.heading | safe }}</h2>
-                                {% else %}
-                                <h2 class="">Update About us heading the Admin (Edit Pages sectio)</h2>
-                            {% endif %}
-                            </div>
-                            {% if about_us %}
-       
-                            <p class="welcome-one__text2">{{ about_us.content | safe }}</p>
-                            {% else %}
-                            <p class="welcome-one__text2">Update About us content in the Admin (Edit Pages sectio)</p>
-                        {% endif %}
-                           
-                          
-                          
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--Give Helping Start-->
-     
-  
-        <!--Charity Activity Start-->
-      
-        <!--Charity Activity End-->
-        <section class="make-donation-two">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-6 col-lg-6">
-                        <div class="make-donation-two__left">
-                            <div class="block-title text-left">
-                               <h4>Our Mission</h4>
-                               {% if mission %}
-       
-                               <h2 class="">{{ mission.heading | safe }}</h2>
-                               {% else %}
-                               <h2 class="">Update Mission heading the Admin (Edit Pages section)</h2>
-                           {% endif %}
-                            </div>
-                            {% if mission %}
-                            <p class="make-donation-two__text">{{ mission.content | safe }}</p>
-                                {% else %}
-                                <p class="make-donation-two__text">Update Mission content in the Admin Edit Pages section</p>
-                                {% endif %}
-                         
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6">
@@ -236,13 +189,113 @@
                             </div>
                         </div>
                     </div>
+                    <!-- <div class="col-xl-6 col-lg-6">
+                        <div class="welcome-one__left">
+                            <div class="welcome-one__img " data-wow-delay="100ms" style="visibility: visible; animation-delay: 100ms; animation-name: slideInLeft;">
+                                <img src="{% static 'assets/images/resources/welcome_one_img_1.png' %}" alt="">
+                                <div class="welcome-one__badge">
+                                    <img src="{% static 'assets/images/resources/' %}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+              
                 </div>
             </div>
         </section>
-        <section class="become-volunteer">
+        <!--Give Helping Start-->
+      
+  <style>
+    .make-donation-two__left, .make-donation-two__right {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+  </style>
+        <!--Charity Activity Start-->
+        <section class="make-donation-two">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-xl-9 col-lg-9">
+                        <div class="make-donation-two__left">
+                            <div class="block-title text-left">
+                               {% if about_us %}  
+                               <h2>About Us</h2>
+                               <br>
+                               <h4 class="">{{ about_us.heading | safe }}</h4>
+                               {% else %}
+                               <h2 class="">Update Abot us heading  in Edit Pages</h2>
+                           {% endif %}
+                            </div>
+                            {% if about_us %}
+                            <p class="make-donation-two__text">{{ about_us.content | safe }}</p>
+                                {% else %}
+                                <p class="make-donation-two__text">Update about us content in Edit Pages </p>
+                                {% endif %}
+                         
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3">
+                        <div class="make-donation-two__right">
+                            <div class="row">
+                                <div class="">
+                                    <div class="make-donation-two__single-img">
+                                        <img src="{% static 'assets/images/resources/make-donation-two-img-1.jpg' %}" alt="">
+                                    </div>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Charity Activity End-->
+        <section class="make-donation-two" style="margin-top: -160px;" >
             <div class="container">
                 <div class="row">
                     <div class="col-xl-5 col-lg-5">
+                        <div class="make-donation-two__right">
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6">
+                                    <div class="make-donation-two__single-img">
+                                        <img src="{% static 'assets/images/resources/make-donation-two-img-1.jpg' %}" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6">
+                                    <div class="make-donation-two__single-img">
+                                        <img src="{% static 'assets/images/resources/make-donation-two-img-1.jpg' %}" alt="">
+                                    </div>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-7 col-lg-7">
+                        <div class="make-donation-two__left">
+                            <div class="block-title text-left">
+                               {% if mission %}
+       
+                               <h4 class="">{{ mission.heading | safe }}</h4>
+                               {% else %}
+                               <h2 class="">Update Mission heading (Edit Pages )</h2>
+                           {% endif %}
+                            </div>
+                            {% if mission %}
+                            <p class="make-donation-two__text">{{ mission.content | safe }}</p>
+                                {% else %}
+                                <p class="make-donation-two__text">Update Mission content in Edit Pages </p>
+                                {% endif %}
+                         
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+        </section>
+        <section class="become-volunteer" style="margin-top: -160px;">
+            <div class="container">
+                <div class="row">
+                    <!-- <div class="col-xl-5 col-lg-5">
                         <div class="become-volunteer__left">
                             <div class="become-volunteer__img">
                                 <img src="{% static 'assets/images/resources/become-volunteer-img1.png' %}" alt="">
@@ -250,23 +303,22 @@
                         
                             
                         </div>
-                    </div>
-                    <div class="col-xl-7 col-lg-7">
+                    </div> -->
+                    <div class="col-xl-12 col-lg-12 ">
                         <div class="become-volunteer__right">
                             <div class="make-donation-two__left">
                                 <div class="block-title text-left">
-                                   <h4>Our Vision</h4>
 
                                    {% if vision %}
-                                   <h2 class="">{{ vision.heading | safe }}</h2>
+                                   <h4 class="">{{ vision.heading | safe }}</h4>
                                    {% else %}
-                                   <h2 class="">Update Vision heading the Admin (Edit Pages section)</h2>
+                                   <h2 class="">Update Vision heading (Edit Pages )</h2>
                                     {% endif %}
                                 </div>
                                     {% if vision %}
                                     <p class="make-donation-two__text">{{ vision.content | safe }}</p>
                                     {% else %}
-                                        <p class="make-donation-two__text">Update Vision content in the Admin Edit Pages section</p>
+                                        <p class="make-donation-two__text">Update Vision content in Edit Pages </p>
                                     {% endif %}
                              
                             </div>
@@ -290,7 +342,7 @@
        
                             <p class="welcome-one__text2">{{ Volunteer.content | safe }}</p>
                             {% else %}
-                            <p class="welcome-one__text2">Update Volunteer content in the Admin Edit Profile Section</p>
+                            <p class="welcome-one__text2">Update Volunteer content in Edit Profile Section</p>
                         {% endif %}
                                        
                                         
