@@ -125,11 +125,12 @@ li {
 
 .block-title h4 {
     position: relative;
-    font-size: 30px;
+    font-size: 50px;
     color: var(--thm-primary);
-    line-height: 40px;
+    line-height: 80px;
     display: inline-block;
     font-family: var(--thm-font-shadows);
+    font-weight: 600;
 }
 
 .block-title h2 {

@@ -46,9 +46,9 @@ font-family: 'Rubik', sans-serif;
 */
 
 :root {
-    --thm-font: 'Rubik', sans-serif;
-    --thm-font-shadows: 'Shadows Into Light', cursive;
-    --thm-font-abril: 'Abril Fatface', cursive;
+    --thm-font: 'Poppins', serif;
+    --thm-font-shadows: 'Poppins', serif;
+    --thm-font-abril: 'Poppins', serif;
     --thm-base: #f64574;
     --thm-base-rgb: 257, 155, 0;
     --thm-primary: #f64574;
@@ -125,16 +125,17 @@ li {
 
 .block-title h4 {
     position: relative;
-    font-size: 30px;
+    font-size: 50px;
     color: var(--thm-primary);
-    line-height: 40px;
+    line-height: 80px;
     display: inline-block;
     font-family: var(--thm-font-shadows);
+    font-weight: 600;
 }
 
 .block-title h2 {
-    font-size: 50px;
-    line-height: 60px;
+    font-size: 30px;
+    line-height: 40px;
 }
 
 
@@ -1349,10 +1350,10 @@ li {
     position: relative;
     display: inline-block;
     margin: 0;
-    font-size: 40px;
+    font-size: 30px;
     color: #ffffff;
-    font-family: var(--thm-font-shadows);
-    line-height: 50px;
+    font-family: var(--thm-font);
+    line-height: 0px;
     opacity: 0;
     -webkit-transform: translateY(-120px);
     transform: translateY(-120px);
@@ -1382,8 +1383,8 @@ li {
     margin-top: 10px;
     margin-bottom: 41px;
     color: #fff;
-    font-size: 110px;
-    line-height: 120px;
+    font-size: 90px;
+    line-height: 70px;
     opacity: 0;
     visibility: hidden;
     -webkit-transform: translateY(90px);

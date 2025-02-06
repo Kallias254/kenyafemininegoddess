@@ -2,6 +2,98 @@
 {% load static  %}
 
 {% block content %}
+<br><br>
+<!--Make Donation Two Start-->
+<section class="make-donation-two">
+    <div class="container">
+       <br>    <br>
+        <div class="row">
+            <div class="col-xl-6 col-lg-6">
+                <div class="make-donation-two__left">
+                    <div class="block-title text-left">
+                 {% if aboutUs %}
+       
+                        <h2 class="welcome-one__text2">{{ aboutUs.heading | safe }}</h2>
+                      
+                    </div>
+                
+                    <p class="make-donation-two__text">{{ aboutUs.content | safe }}</p>
+                    {% else %}
+                    <p class="make-donation-two__text">Update About us Content in the Admin Edit Pages Section</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6">
+                <div class="make-donation-two__right">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6">
+                            <div class="make-donation-two__single-img">
+                                <img src="{% static 'assets/images/resources/make-donation-one-img-1.png' %}" alt="">
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6">
+                            <div class="make-donation-two__single-img">
+                                <img src="{% static 'assets/images/resources/make-donation-img-2.png' %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="make-donation-two__progress">
+                    <div class="make-donation-two__progress-single">
+                       <h4 class="make-donation-two__progress-title">Funding</h4>
+                        <div class="bar">
+                            <div class="bar-inner count-bar" data-percent="20%">
+                                <div class="count-text">13%</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="make-donation-two__progress-single">
+                       <h4 class="make-donation-two__progress-title">Donations</h4>
+                        <div class="bar mrb-0">
+                            <div class="bar-inner count-bar" data-percent="36%">
+                                <div class="count-text">36%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Make Donation Two End-->
+
+<!--CTA One Start-->
+<section class="cta-one" style="background-image: url({% static 'assets/images/backgrounds/cta-one-bg.png' %})">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="row">
+                    <div class="col-xl-9">
+                        <div class="cta-one__inner">
+                            <div class="cta-one__text">
+                                {% if volunteer %}
+
+                    <p class="welcome-one__text2">{{ volunteer.content | safe }}</p>
+                    {% else %}
+                    <p class="welcome-one__text2">Update Volunteer content in the Admin Edit Profile Section</p>
+                {% endif %}
+                               
+                                
+                            </div>
+                           
+                        </div>
+                    </div>  
+                <div class="col-xl-3">
+                    <div class="cta-one__btn">
+                        <a href="" class="thm-btn">Get Involved Now</a>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--CTA One End-->
 
 {% include 'footer.html' %}
 

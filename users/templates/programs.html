@@ -2,6 +2,133 @@
 {% load static  %}
 
 {% block content %}
+<br><br><br>
+<!--Event Details Top Start-->
+<section class="event-details-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6">
+                <div class="event-details-top__image">
+                    <img src="{% static 'assets/images/event/event-detials-img-1.jpg' %}" alt="">
+                </div>
+            </div>
+            
+            <div class="col-xl-6 col-lg-6">
+                <div class="event-details-top__contant">
+                    {% if our_programs %}
+                    <h3 class="event-details-top__title">{{ our_programs.heading | safe }}</h3>
+                    <p class="event-details-top__text-one">{{ our_programs.content | safe }}</p>
+                {% else %}
+                    <h3 class="event-details-top__title">No Programs available at the moment.</h3>
+                    <p class="event-details-top__text-one">Please update Programs content in the Admin Edit Profile Section.</p>
+                {% endif %}
+                
+
+            
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Event Details Top End-->
+
+<!--Event Details Bottom Start-->
+<section class="event-details-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6">
+                <div class="event-details-bottom__venue">
+                <div class="event-details-bottom-shape-1" style="background-image: url(assets/images/shapes/event-details-bottom-shape.png)"></div>
+                    <h3 class="event-details-bottom__venue-title">Our Reach</h3>
+                    <ul class="list-unstyled">
+                      
+                    </ul>
+                    {% if reach %}
+                    <h2 class="event-details-bottom__venue-text">{{ reach.heading | safe }}</h2>
+                <p class="event-details-bottom__venue-text"> {{ reach.content | safe }} </p>
+                    {% else %}
+                 <p class="event-details-bottom__venue-text">Update Programs Reach content in the Admin Edit Profile Section</p>
+                {% endif %}
+                    
+                   
+                    <div class="event-details-bottom__venue-social">
+                        <a href="https://twitter.com/kefegod" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="clr-fb"><i class="fab fa-facebook-square"></i></a>
+                        <a href="https://www.instagram.com/kenyan_feminine_goddess"  target="_blank" class="clr-ins"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7979.122893531456!2d34.87068056086255!3d0.6501642973630126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1781b89edecaf433%3A0xb806ab89d58ca17f!2sLugari!5e0!3m2!1sen!2ske!4v1699501968682!5m2!1sen!2ske" width="600" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                    <!-- <div class="col-xl-4 col-lg-4">
+                <div class="event-details-bottom__organizer">
+                <div class="event-details-bottom-shape-2" style="background-image: url(assets/images/shapes/event-details-bottom-shape.png)"></div>
+                    <h3 class="event-details-bottom__organizer-title">Organizer</h3>
+                    <p class="event-details-bottom__organizer-text">Neque porro quisquam est, qui dolorem ipsum quiaolor sit amet adipisci veli sed quiae.</p>
+                    <ul class="list-unstyled event-details-bottom__organizer-contact-info">
+                        <li>
+                            <div class="event-details-bottom__organizer__icon">
+                                <i class="fas fa-phone-square-alt"></i>
+                            </div>
+                            <div class="event-details-bottom__organizer__content">
+                                <p><a href="tel:666-888-0000">666 888 0000</a></p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="event-details-bottom__organizer__icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="event-details-bottom__organizer__content">
+                                <p><a href="mailto:info@kenyanfemininegoddess.org">info@kenyanfemininegoddess.org</a></p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="event-details-bottom__organizer__icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="event-details-bottom__organizer__content">
+                                <p>88 top broklyn street road new york, USA</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</section>
+<!--Event Details Bottom End-->
+
+<!--CTA One Start-->
+<section class="cta-one" style="background-image: url({% static 'assets/images/backgrounds/cta-one-bg.png' %})">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="row">
+                    <div class="col-xl-9">
+                        <div class="cta-one__inner">
+                            <div class="cta-one__text">
+                                {% if volunteer %}
+
+                    <p class="welcome-one__text2">{{ volunteer.content | safe }}</p>
+                    {% else %}
+                    <p class="welcome-one__text2">Update Volunteer content in the Admin Edit Profile Section</p>
+                {% endif %}
+                               
+                                
+                            </div>
+                           
+                        </div>
+                    </div>  
+                <div class="col-xl-3">
+                    <div class="cta-one__btn">
+                        <a href="" class="thm-btn">Get Involved Now</a>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--CTA One End-->
 
 {% include 'footer.html' %}
 

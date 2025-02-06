@@ -125,11 +125,12 @@ li {
 
 .block-title h4 {
     position: relative;
-    font-size: 30px;
+    font-size: 60px;
     color: var(--thm-primary);
-    line-height: 40px;
+    line-height: 80px;
     display: inline-block;
     font-family: var(--thm-font-shadows);
+    font-weight: 600;
 }
 
 .block-title h2 {
@@ -1333,7 +1334,7 @@ li {
     height: 100%;
     width: 100%;
     content: "";
-    background: rgba(37, 3, 33, 0.485);
+    background: rgba(37, 3, 33, 0.403);
     z-index: -1;
 }
 
@@ -1349,10 +1350,10 @@ li {
     position: relative;
     display: inline-block;
     margin: 0;
-    font-size: 40px;
+    font-size: 50px;
     color: #ffffff;
-    font-family: var(--thm-font-shadows);
-    line-height: 50px;
+    font-family: var(--thm-font);
+    line-height: 0px;
     opacity: 0;
     -webkit-transform: translateY(-120px);
     transform: translateY(-120px);
