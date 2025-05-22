@@ -1,6 +1,4 @@
-#!/bin/sh
-'''exec' "/Users/djsean/Desktop/CLIENTS 2024/KFG/env/bin/python3.12" "$0" "$@"
-' '''
+#!/home/acer/Documents/projects/KFGAPP/env/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

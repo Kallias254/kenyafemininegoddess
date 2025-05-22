@@ -1,4 +1,4 @@
-#!/Users/djsean/Desktop/CLIENTS 2024/KFG/env/bin/python3.12
+#!/home/acer/Documents/projects/KFGAPP/env/bin/python3
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 

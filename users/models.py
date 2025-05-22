@@ -6,7 +6,6 @@ from taggit.managers import TaggableManager
 from html import unescape
 from django.utils.html import strip_tags
 from shortuuid.django_fields import ShortUUIDField
-from pyuploadcare.dj.models import ImageField
 from ckeditor.fields import RichTextField
 
 # Create your models here.

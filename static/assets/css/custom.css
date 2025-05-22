@@ -1,0 +1,193 @@
+/* --- Event Card Themed - Horizontal Layout --- */
+
+/* Main card wrapper - keep some base styles, adjust for row layout */
+.news-one__single.event-card-themed {
+    background: #ffffff;
+    border: 1px solid #eae5e3; /* Keep theme's border */
+    border-radius: 8px;       /* Apply rounding to the whole card */
+    overflow: hidden;         /* Important for containing Bootstrap row/cols with rounding */
+    margin-bottom: 30px;
+    display: block; /* Ensure it behaves as a block for the inner row */
+}
+.news-one__single.event-card-themed:hover {
+    box-shadow: 0px 10px 60px 0px rgba(0, 0, 0, .07); /* Keep hover shadow */
+}
+
+/* The Bootstrap row inside our themed card */
+.event-card-themed .row.g-0 {
+    /* g-0 removes gutters, which is good for seamless image/content connection */
+}
+
+/* Image Column (.col-md-4) and its contents */
+.event-card-themed .col-md-4 .news-one__img {
+    height: 100%; /* Make the image wrapper take full height of the column */
+    position: relative; /* For absolute positioning of date box inside it */
+}
+.event-card-themed .col-md-4 .news-one__img-box {
+    border-radius: 0; /* Remove specific top rounding, whole card is rounded */
+    height: 100%;
+    display: flex; /* Helps with image centering if object-fit is not enough */
+    align-items: center;
+    overflow: hidden; /* Keep this */
+}
+.event-card-themed .col-md-4 .news-one__img-box img.event-card-image-themed {
+    width: 100%;
+    height: 100%; /* Make image fill the .news-one__img-box */
+    object-fit: cover; /* Crucial for aspect ratio and filling */
+    border-radius: 0; /* Image itself shouldn't have rounding if container handles it */
+    transform: scale(1); /* Reset theme's default scale for card image */
+    transition: transform 0.3s ease-out;
+}
+.event-card-themed:hover .col-md-4 .news-one__img-box img.event-card-image-themed {
+    transform: scale(1.05); /* Keep theme's hover zoom effect */
+}
+
+/* The date box - adjust for horizontal layout */
+.event-card-themed .news-one__date-box.event-date-themed {
+    position: absolute;
+    bottom: 10px; /* Position from bottom of image column */
+    left: 10px;   /* Position from left of image column */
+    right: auto;  /* Override original 'right: 20px' */
+    top: auto;    /* Override any top positioning */
+    height: auto; /* Let content define height or set fixed */
+    width: auto;  /* Let content define width or set fixed */
+    padding: 5px 10px;
+    z-index: 2;
+    /* Keep background, color, font from your theme's .news-one__date-box or override */
+    background: var(--thm-base); /* Your theme's pink */
+    border-radius: 5px; /* Slightly rounded corners for the date box itself */
+    color: #ffffff;
+    font-size: 14px; /* Adjust as needed */
+    line-height: 1.2;
+    margin-left: 15px;
+}
+.event-card-themed .event-date-themed p {
+    margin: 0;
+}
+
+
+/* Content Column (.col-md-8) and its contents */
+.event-card-themed .col-md-8 .news-one__content.event-content-themed {
+    border: 0; /* Remove border, outer card has it */
+    border-radius: 0; /* Outer card is rounded */
+    padding: 20px; /* Adjust padding */
+    height: 100%; /* Make content area fill its column height */
+    display: flex;
+    flex-direction: column; /* To push button to bottom */
+    background: #ffffff; /* Ensure background if needed */
+}
+
+.event-card-themed .news-one__meta {
+    /* Theme styles should apply, maybe adjust margin */
+    margin-bottom: 10px;
+}
+.event-card-themed .news-one__meta li {
+    font-size: 0.85em; /* Slightly smaller meta */
+}
+
+.event-card-themed .news-one__title h3 {
+    /* Theme styles should apply, maybe adjust font size/margin */
+    font-size: 1.3em; /* Example size */
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.event-card-themed .event-datetime-themed {
+    font-size: 0.85em;
+    color: #555;
+    margin-bottom: 10px;
+}
+.event-card-themed .event-datetime-themed i {
+    margin-right: 5px;
+}
+
+.event-card-themed .event-description-themed {
+    font-size: 0.9em;
+    line-height: 1.6;
+    flex-grow: 1; /* Takes available space, pushes button down */
+    margin-bottom: 15px;
+}
+
+.event-card-themed .news-one__btn {
+    /* Theme styles should apply, ensure it's at the bottom */
+    margin-top: auto; /* Pushes button to bottom of flex container */
+    align-self: flex-start;
+}
+
+.event-card-themed .col-md-4,
+.event-card-themed .col-md-8 {
+    padding: 0px !important;
+}
+
+/* Responsive stacking for smaller screens */
+@media (max-width: 767.98px) { /* Bootstrap's md breakpoint (mobile) */
+    .news-one__single.event-card-themed .row.g-0 {
+        display: block; /* Override Bootstrap row flex behavior to stack columns */
+    }
+    .event-card-themed .col-md-4,
+    .event-card-themed .col-md-8 {
+        width: 100% !important; /* Force full width */
+        max-width: 100% !important;
+        flex-basis: auto !important;
+    }
+    .event-card-themed .col-md-4 .news-one__img-box img.event-card-image-themed {
+        height: 200px; /* Or a specific height for mobile images */
+        border-top-left-radius: 8px;  /* Top rounding for image when stacked */
+        border-top-right-radius: 8px;
+        opacity: 1 !important; /* Force it to be visible */
+        position: relative; /* Ensure it's in the normal flow, not behind the overlay if z-index issues */
+        z-index: 1; /* Above any default background but below the hover overlay if needed */
+    }
+    .event-card-themed .col-md-8 .news-one__content.event-content-themed {
+        border-bottom-left-radius: 8px; /* Bottom rounding for content when stacked */
+        border-bottom-right-radius: 8px;
+    }
+    .event-card-themed .news-one__date-box.event-date-themed {
+        /* Adjust date position if needed for stacked view, already relative to image box */
+    }
+}
+
+.upcoming-events-section {
+margin-top: 10rem;;
+}
+
+.news-details__meta {
+    display: block
+}
+
+.news-details__content ul + p {
+    margin-top: 1.5rem;
+}
+
+/* In your custom.css */
+
+/* Override the original theme's overlay behavior for the main image link in event cards */
+.event-card-themed .news-one__img-box > a { /* This now targets your main image link */
+    opacity: 1 !important; /* Make the link (and thus the image inside it) always visible */
+    background-color: transparent !important; /* Remove any overlay background from the link itself */
+    display: block; /* Ensure the link takes up space for the image */
+    width: 100%;
+    height: 100%;
+    /* Remove any transform that might be hiding it */
+    transform: none !important;
+}
+
+/* Then ensure the image itself is styled correctly */
+.event-card-themed .news-one__img-box > a > img.event-card-image-themed {
+    width: 100%;
+    height: 220px; /* Your desired image height */
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease-out; /* For the hover scale effect */
+}
+
+/* Keep the image scale on hover for the card */
+.event-card-themed:hover .news-one__img-box > a > img.event-card-image-themed {
+    transform: scale(1.05);
+}
+
+/* Remove the original theme's "+" icon from :before and :after on the main image link */
+.event-card-themed .news-one__img-box > a:before,
+.event-card-themed .news-one__img-box > a:after {
+    display: none !important;
+}

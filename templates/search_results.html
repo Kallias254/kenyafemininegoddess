@@ -1,0 +1,75 @@
+{% extends "base.html" %} {# Or whatever your main base template is, e.g., "users/templates/basemain.html" #}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5"> {# Added some margin for spacing #}
+    <h2>{{ page_title }}</h2>
+
+    {% if query %}
+        {% if events %}
+            <p class="lead">Found {{ events|length }} event(s) matching your search.</p> {# Use events|length for paginated objects #}
+            <hr>
+            {% for event_item in events %} {# Changed loop variable to event_item to avoid conflict if 'event' is in outer context #}
+                <div class="card mb-3 shadow-sm">
+                    <div class="row g-0">
+                        {% if event_item.featured_image %}
+                        <div class="col-md-4">
+                            <img src="{{ event_item.featured_image.url }}" class="img-fluid rounded-start" alt="{{ event_item.title }}" style="object-fit: cover; height: 100%;">
+                        </div>
+                        {% endif %}
+                        <div class="col-md-{% if event_item.featured_image %}8{% else %}12{% endif %}">
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="{{ event_item.get_absolute_url }}">{{ event_item.title }}</a></h5>
+                                <p class="card-text"><small class="text-muted">
+                                    <strong>Date:</strong> {{ event_item.start_datetime|date:"D, d M Y, P" }}
+                                    {% if event_item.end_datetime %}
+                                        to {{ event_item.end_datetime|date:"P" }}
+                                    {% endif %}
+                                    <br>
+                                    <strong>Location:</strong> {{ event_item.location_name }}
+                                    {% if event_item.category %}
+                                        <br><strong>Category:</strong> <a href="{% url 'blogapp:events_by_category' category_slug=event_item.category.slug %}">{{ event_item.category.name }}</a>
+                                    {% endif %}
+                                </small></p>
+                                <p class="card-text">{{ event_item.description|striptags|truncatewords_html:25|safe }}</p>
+                                <a href="{{ event_item.get_absolute_url }}" class="btn btn-primary btn-sm">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+            {% comment %} Pagination for search results {% endcomment %}
+            {% if is_paginated %}
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        {% if page_obj.has_previous %}
+                            <li class="page-item"><a class="page-link" href="?q={{ query }}&page=1">« First</a></li>
+                            <li class="page-item"><a class="page-link" href="?q={{ query }}&page={{ page_obj.previous_page_number }}">Previous</a></li>
+                        {% else %}
+                            <li class="page-item disabled"><a class="page-link" href="#">« First</a></li>
+                            <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                        {% endif %}
+
+                        <li class="page-item disabled"><a class="page-link" href="#">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</a></li>
+
+                        {% if page_obj.has_next %}
+                            <li class="page-item"><a class="page-link" href="?q={{ query }}&page={{ page_obj.next_page_number }}">Next</a></li>
+                            <li class="page-item"><a class="page-link" href="?q={{ query }}&page={{ page_obj.paginator.num_pages }}">Last »</a></li>
+                        {% else %}
+                            <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+                            <li class="page-item disabled"><a class="page-link" href="#">Last »</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            {% endif %}
+
+        {% else %}
+            <p class="lead">No events found matching your search criteria: "<strong>{{ query }}</strong>"</p>
+        {% endif %}
+    {% else %}
+        <p class="lead">Please enter a search term in the search bar above.</p>
+    {% endif %}
+</div>
+{% endblock %}

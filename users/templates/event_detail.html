@@ -1,0 +1,157 @@
+{% extends 'basemain.html' %}
+{% load static %}
+
+{% block title %}{{ event.title }} - KFG Events{% endblock %}
+
+{% block content %}
+<div class="page-wrapper">
+
+    <section class="page-header" style="background-image: url('{% if event.featured_image %}{{ event.featured_image.url }}{% else %}{% static 'assets/images/backgrounds/default-page-header-bg.jpg' %}{% endif %}');">
+        <br><br><br>
+        <div class="container">
+            <div class="page-header__inner">
+                <h2>{{ event.title }}</h2>
+                <ul class="thm-breadcrumb list-unstyled">
+                    <li><a href="{% url 'blogapp:event_list' %}">Back to Events</a></li>
+                    <li><span>/</span></li>
+                    <li>{{ event.title }}</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="news-details">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 col-lg-7">
+                    <div class="news-details__left">
+                        {% if event.featured_image and not request.resolver_match.url_name == 'event_detail' %} {# Only show again if not already in header, or remove this if redundant #}
+                        {# Or simply remove this redundant image display if the page-header is enough #}
+                        <!-- <div class="news-details__img">
+                            <img src="{{ event.featured_image.url }}" alt="{{ event.title }}">
+                        </div> -->
+                        {% endif %}
+                        <div class="news-details__content">
+                            <ul class="list-unstyled news-details__meta">
+                                {% if event.category %}
+                                <li>
+                                    <i class="fas fa-folder-open"></i> {{ event.category.title }}  {# No longer a link #}
+                                </li>
+                                {% endif %}
+                                <li><i class="fas fa-calendar-alt"></i> {{ event.start_datetime|date:"D, d M Y, P" }}
+                                    {% if event.end_datetime %}
+                                        to {{ event.end_datetime|date:"P" }}
+                                    {% endif %}
+                                </li>
+                                {% if event.location_name %}
+                                <li><i class="fas fa-map-marker-alt"></i> {{ event.location_name }}</li>
+                                {% endif %}
+                                {% if event.location_address %}
+                                    <li><i class="fas fa-map-pin"></i> <small>{{ event.location_address|linebreaksbr }}</small></li>
+                                {% endif %}
+                                <!-- <li><i class="far fa-eye"></i> Views ({{ event.views }})</li> -->
+                            </ul>
+                           
+                            {{ event.description|safe }}
+                        </div>
+                        
+                        {% if event.organizer_display_name %}
+                        <div class="author-one mt-4">
+                            <div class="author-one__content"> 
+                                <h4>Organized by: <b>{{ event.organizer_display_name }}</b></h4>
+                            </div>
+                        </div>
+                        {% elif event.created_by_user %}
+                        <div class="author-one mt-4">
+                             <div class="author-one__content">
+                                <h4>Posted by: <b>{{ event.created_by_user.get_full_name|default:event.created_by_user.username }}</b></h4>
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        {% if gallery_images %}
+                            <div class="event-gallery mt-5">
+                                <h3 class="mb-3">Event Gallery</h3>
+                                <div class="row">
+                                    {% for img_obj in gallery_images %}
+                                        <div class="col-md-4 mb-3">
+                                            <a href="{{ img_obj.image.url }}" data-lightbox="event-gallery" data-title="{{ img_obj.caption|default:event.title }}">
+                                                <img src="{{ img_obj.image.url }}" alt="{{ img_obj.caption|default:event.title }}" class="img-fluid rounded" style="height: 200px; object-fit: cover;">
+                                            </a>
+                                            {% if img_obj.caption %}
+                                                <p class="text-center small mt-1">{{ img_obj.caption }}</p>
+                                            {% endif %}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-5">
+                    <div class="sidebar">
+                        <!-- Sidebar content like recent events, categories, related events -->
+                        <!-- ... (copied from your previous version) ... -->
+                        <div class="sidebar__single sidebar__post">
+                            <h3 class="sidebar__title">Recent Events</h3>
+                            <ul class="sidebar__post-list list-unstyled">
+                                {% for recent_event in recent_events %}
+                                    <li>
+                                        {% if recent_event.featured_image %}
+                                        <div class="sidebar__post-image">
+                                            <img src="{{ recent_event.featured_image.url }}" alt="{{ recent_event.title }}" style="width:60px; height:60px; object-fit:cover;">
+                                        </div>
+                                        {% endif %}
+                                        <div class="sidebar__post-content">
+                                            <h3>
+                                                <span class="sidebar__post-content_meta"><i class="far fa-calendar-alt"></i>{{ recent_event.start_datetime|date:"d M Y" }}</span>
+                                                <a href="{{ recent_event.get_absolute_url }}">{{ recent_event.title|truncatechars:35 }}</a>
+                                            </h3>
+                                        </div>
+                                    </li>
+                                {% empty %}
+                                    <li>No other recent events.</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="sidebar__single sidebar__category mt-4">
+                            <h3 class="sidebar__title">Categories</h3>
+                            <ul class="sidebar__category-list list-unstyled">
+                                {% for cat in categories %}
+                                <li>{{ cat.title }}</li>
+                                {% empty %}
+                                <li>No categories available.</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                         <div class="sidebar__single sidebar__post mt-4">
+                            <h3 class="sidebar__title">Related Events</h3>
+                            <ul class="sidebar__post-list list-unstyled">
+                                {% for rel_event in related_events %}
+                                    <li>
+                                        {% if rel_event.featured_image %}
+                                        <div class="sidebar__post-image">
+                                            <img src="{{ rel_event.featured_image.url }}" alt="{{ rel_event.title }}" style="width:60px; height:60px; object-fit:cover;">
+                                        </div>
+                                        {% endif %}
+                                        <div class="sidebar__post-content">
+                                            <h3>
+                                                <span class="sidebar__post-content_meta"><i class="far fa-calendar-alt"></i>{{ rel_event.start_datetime|date:"d M Y" }}</span>
+                                                <a href="{{ rel_event.get_absolute_url }}">{{ rel_event.title|truncatechars:35 }}</a>
+                                            </h3>
+                                        </div>
+                                    </li>
+                                {% empty %}
+                                    <li>No related events in this category.</li>
+                                {% endfor %}
+                            </ul>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+{% include 'footer.html' %}
+{% endblock %}
