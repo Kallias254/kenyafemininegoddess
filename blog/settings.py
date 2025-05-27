@@ -2,54 +2,55 @@
 
 from pathlib import Path
 import os
+import dj_database_url
+from decouple import config
 
-# It's good practice to keep these imports if you plan to use environment variables
-# for sensitive data in the future (especially for production), but for now,
-# we are hardcoding the SQLite database.
-# import dj_database_url # Not strictly needed for the hardcoded SQLite config below
-# from decouple import config # Not strictly needed for the hardcoded SQLite config below
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Read from environment variables, with local defaults if necessary
+SECRET_KEY = config('SECRET_KEY', default='local_dev_insecure_secret_key_for_KFGAPP_project_xyz123') # Use a strong default if needed for local
+DEBUG = config('DEBUG', default=True, cast=bool) # Default to True for local dev if .env is missing DEBUG
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
+ALLOWED_HOSTS_STRING = config('ALLOWED_HOSTS', default='localhost,127.0.0.1')
+ALLOWED_HOSTS = [s.strip() for s in ALLOWED_HOSTS_STRING.split(',')]
 
-# SECURITY WARNING: keep the secret key used in production secret!
-# REPLACE THIS WITH YOUR ACTUAL SECRET KEY FROM YOUR ORIGINAL FILE
-SECRET_KEY = 'jqx3e+sq2(sja+kuxr6(t5oijbe6(9jaf!1ieat0raf0nb&w=w'
+CSRF_TRUSTED_ORIGINS = []
+# Automatically add Fly.dev host if FLY_APP_NAME is set (Fly.io sets this env var)
+FLY_APP_NAME = config('FLY_APP_NAME', default=None)
+if FLY_APP_NAME:
+    fly_app_url = f"https://{FLY_APP_NAME}.fly.dev"
+    CSRF_TRUSTED_ORIGINS.append(fly_app_url)
+    if f"{FLY_APP_NAME}.fly.dev" not in ALLOWED_HOSTS: # Check specific hostname
+        ALLOWED_HOSTS.append(f"{FLY_APP_NAME}.fly.dev")
+# Also good to add the base Vercel domain if you ever deploy there for previews with custom domain
+# VERCEL_URL = config('VERCEL_URL', default=None) # Vercel sets this env var automatically
+# if VERCEL_URL and VERCEL_URL not in ALLOWED_HOSTS:
+#    ALLOWED_HOSTS.append(VERCEL_URL)
+#    CSRF_TRUSTED_ORIGINS.append(f"https://{VERCEL_URL}")
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True # Keep True for local development
-
-ALLOWED_HOSTS = ['*'] # Allows all hosts for local development, restrict for production
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Application definition
 INSTALLED_APPS = [
-    'jet', # Admin theme, ensure it's compatible or consider removing if causing issues
-    # 'graphene_django', # For GraphQL, if you're not using it, you can comment it out.
-                       # If you are, ensure 'graphql_core>=2.1' or similar is installed.
-    'users.apps.UsersConfig', # Assuming this is your users app configuration
-    'blogapp',                # Your main app, or 'blogapp.apps.BlogappConfig' if it exists
+    'jet',
+    'users.apps.UsersConfig',
+    'blogapp',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ckeditor',               # WYSIWYG editor
-    'taggit',                 # For tagging functionality
-    'import_export',          # For admin import/export
-    'ckeditor_uploader',      # For uploading images within CKEditor. Requires configuration.
-                              # Ensure MEDIA_ROOT and MEDIA_URL are set correctly for this.
+    'ckeditor',
+    'taggit',
+    'import_export',
+    'ckeditor_uploader',
+    # 'graphene_django', # Kept commented out
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware', # For serving static files, good for production, fine for dev
+    'whitenoise.middleware.WhiteNoiseMiddleware', # For serving static files
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -58,22 +59,16 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'blog.urls' # Points to KFGAPP/blog/urls.py
+ROOT_URLCONF = 'blog.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        # Django will look for templates in these directories first
         'DIRS': [
-            os.path.join(BASE_DIR, 'templates'),      # Project-level templates (KFGAPP/templates/)
-            os.path.join(BASE_DIR, 'users', 'templates'), # Templates inside users app (KFGAPP/users/templates/)
-                                                      # This makes templates like 'index.html' in users/templates directly findable.
-                                                      # If you prefer app-namespacing (e.g. 'users/index.html'),
-                                                      # you'd put templates in users/templates/users/index.html
-                                                      # and APP_DIRS=True would handle it.
-                                                      # For now, this matches your observed structure.
+            os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'users', 'templates'),
         ],
-        'APP_DIRS': True, # Django will also look inside each app's 'templates' directory (e.g., blogapp/templates/)
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -85,35 +80,27 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'blog.wsgi.application' # For WSGI deployment
+WSGI_APPLICATION = 'blog.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
+# Database Configuration
+DEFAULT_SQLITE_URL = f"sqlite:///{BASE_DIR / 'db.sqlite3'}"
+DATABASE_URL_FROM_ENV = config('DATABASE_URL', default=DEFAULT_SQLITE_URL) # Fallback to SQLite if DATABASE_URL not set
 
-# Commented out PostgreSQL configuration
-# DATABASES = {
-#   'default': {
-#     'ENGINE': 'django.db.backends.postgresql',
-#     'NAME': 'neondb',
-#     'USER': 'neondb_owner',
-#     'PASSWORD': '4MUPmrWS7xwV',
-#     'HOST': 'ep-cool-dew-a4fl1wt4.us-east-1.aws.neon.tech',
-#     'PORT': '5432',
-#     'OPTIONS': {'sslmode': 'require'},
-#   }
-# }
-
-# SQLite configuration for local development
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3', # This will create db.sqlite3 in your KFGAPP project root
-    }
+    'default': dj_database_url.parse(DATABASE_URL_FROM_ENV, conn_max_age=600)
 }
 
+# Adjust PostgreSQL options if using PostgreSQL
+if DATABASES['default'].get('ENGINE') == 'django.db.backends.postgresql':
+    if 'OPTIONS' not in DATABASES['default'] or DATABASES['default']['OPTIONS'] is None:
+        DATABASES['default']['OPTIONS'] = {}
+    # For Supabase and other cloud PostgreSQL, 'require' is usually better than 'prefer'
+    # but 'prefer' is safer if local PostgreSQL doesn't have SSL.
+    # Since DATABASE_URL for Supabase includes sslmode, this might be redundant or can be 'require'.
+    if 'sslmode' not in DATABASES['default']['OPTIONS']:
+         DATABASES['default']['OPTIONS']['sslmode'] = config('DB_SSLMODE', default='prefer')
 
-# Password validation
-# https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
+
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',},
@@ -121,65 +108,31 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',},
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/3.1/topics/i18n/
 LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC' # Or your local timezone, e.g., 'Africa/Nairobi'
+TIME_ZONE = 'UTC'
 USE_I18N = True
-USE_L10N = True # Deprecated in Django 4.0, but you are on 3.2.
-USE_TZ = True   # Recommended to keep True for timezone-aware datetimes
+USE_L10N = True # Django 3.2 still uses this.
+USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.1/howto/static-files/
-STATIC_URL = '/static/' # URL prefix for static files
-
-# Directory where `collectstatic` will gather all static files for deployment.
-# This should be different from any directory in STATICFILES_DIRS.
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-# Additional locations of static files for Django's development server to find.
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'), # KFGAPP/static/
-]
-
-# For WhiteNoise, to serve static files efficiently in production (and dev if used)
-# WHITENOISE_MANIFEST_STRICT = False # You had this, usually not needed unless specific issues arise
+# Static files
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # Where collectstatic puts files
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')] # Where Django dev server finds your app's static files
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+# Media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # Where user uploads go
 
-# Media files (user-uploaded files like images for Events)
-MEDIA_URL = '/media/' # URL prefix for media files
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # Absolute filesystem path to the directory for user-uploaded files
-                                            # Create this 'media' directory in KFGAPP project root: mkdir media
-
-# UPLOADCARE settings (if you are using Uploadcare for image/file uploads)
-# UPLOADCARE = {
-#   'pub_key': 'f914008525312051b54c',  # Replace with your actual Uploadcare public key
-#   'secret': '06f605e3fa31437f2a51',   # Replace with your actual Uploadcare secret key
-# }
-# Note: If using Uploadcare extensively, you might not need MEDIA_ROOT/MEDIA_URL for those specific fields,
-# as Uploadcare hosts the files. However, standard Django ImageFields/FileFields will use MEDIA_ROOT.
-
-# CKEditor settings
-CKEDITOR_UPLOAD_PATH = "uploads/" # Subdirectory within MEDIA_ROOT for CKEditor uploads.
-                                  # So files will go to KFGAPP/media/uploads/
+CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_CONFIGS = {
     'default': {
-        'toolbar': 'full', # Or 'basic', or a custom toolbar configuration
+        'toolbar': 'full',
         'height': 300,
         'width': '100%',
     },
 }
 
-# Django Jet admin theme settings (optional, defaults are usually fine)
-# JET_SIDE_MENU_COMPACT = True
-# JET_THEME = 'light-blue'
-
-# Ensure your custom user model is specified if you have one in the 'users' app
-# Example: AUTH_USER_MODEL = 'users.CustomUser'
-# If you're using Django's default User model, you don't need AUTH_USER_MODEL.
-# Your UsersConfig in INSTALLED_APPS suggests you might have custom user setup.
-# If users/models.py defines a custom user, ensure AUTH_USER_MODEL is set.
-# If not, and users app is just for profiles or views, it's fine.
+LOGIN_URL = 'users:login'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'

@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from graphene_django.views import GraphQLView # For GraphQL, if you're using it
+# from graphene_django.views import GraphQLView # For GraphQL, if you're using it
 
 # For user authentication views if defined directly at project level
 # (though you also include('users.urls') which is good)
@@ -14,7 +14,7 @@ urlpatterns = [
     # Third-party app URLs
     path('jet/', include('jet.urls', 'jet')),  # Django Jet URLS
     path('admin/', admin.site.urls),
-    path('graphql/', GraphQLView.as_view(graphiql=True)), # If using GraphQL
+    # path('graphql/', GraphQLView.as_view(graphiql=True)), # If using GraphQL
 
     # User authentication and management URLs
     # These are defined directly here, which is fine.

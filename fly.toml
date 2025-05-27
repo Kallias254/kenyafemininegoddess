@@ -1,0 +1,60 @@
+# KFGAPP/fly.toml
+
+app = 'kenyan-feminine-goddess'
+primary_region = 'jnb' # Your chosen region
+console_command = '/app/manage.py shell' # Changed /code/ to /app/ to match WORKDIR in Dockerfile
+
+[build]
+  # No specific builder needed if using Dockerfile
+  # builder = "paketobuildpacks/builder-jammy-base" # Example, remove if using Dockerfile primarily
+  # If your Dockerfile is in the root, flyctl launch usually detects it.
+
+[deploy]
+  release_command = 'python manage.py migrate --noinput'
+
+[env]
+  PORT = '8000'
+  # DJANGO_SETTINGS_MODULE = 'blog.settings' # Good practice, though often inferred
+
+# This section tells Fly to mount the persistent volume named 'kfg_media_data'
+# to the /app/media directory inside your running application instances.
+# This path MUST match your MEDIA_ROOT setting in settings.py (relative to BASE_DIR which is /app in Docker).
+#[mounts]
+#  source = "kfg_media_data"
+#  destination = "/app/media"
+
+[http_service]
+  internal_port = 8000
+  force_https = true
+  auto_stop_machines = 'stop' # Stops machine when idle to save costs (for free tier)
+  auto_start_machines = true
+  min_machines_running = 0    # For free tier, 0 is common; set to 1 for always-on (might incur cost)
+  processes = ['app']         # Corresponds to the [processes] section in older fly.toml or default gunicorn CMD
+
+# This statics section is for files collected by collectstatic and served by WhiteNoise.
+# The guest_path should match your STATIC_ROOT inside the container.
+# Your Dockerfile WORKDIR is /app and settings.py STATIC_ROOT is os.path.join(BASE_DIR, 'staticfiles')
+# So, inside the container, STATIC_ROOT is /app/staticfiles
+[[statics]]
+  guest_path = "/app/staticfiles"
+  url_prefix = "/static/"
+
+# You DO NOT typically define a [[statics]] block for MEDIA_URL when using WhiteNoise
+# to serve media via wsgi.py modification, as WhiteNoise handles it through the application.
+# If you were using Nginx or another dedicated server for media, you might.
+
+[[vm]] # Defines the machine resources
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
+
+# Optional: Health Checks (good for Fly.io to know if your app is healthy)
+# [[services.http_checks]]
+#   interval = "10s"
+#   timeout = "2s"
+#   grace_period = "5s" # Time to allow app to start before checks fail
+#   method = "GET"
+#   path = "/ht/" # Create a simple health check view at /ht/ in your Django app
+#   protocol = "http"
+#   tls_skip_verify = false
+#   [services.http_checks.headers]

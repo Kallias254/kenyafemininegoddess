@@ -78,27 +78,26 @@
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide">
+<div class="swiper-slide">
                         <div class="image-layer"
-                            style="background-image: url('{% static 'assets/images/main-slider/slider-2-1.jpg' %}');"></div>
+                            style="background-image: url('{% static 'assets/images/main-slider/slider-2-1.jpg' %}');"></div> {# Assuming you might want slider-2-3.jpg or similar for variation #}
                             <br>
                             <div class="container">
                             <div class="swiper-slide__inner">
                                 <div class="row">
                                     <div class="col-xl-12">
                                         {% if hnewww %}
-
-                                        <h2 class="">{{ hneww.heading  }} </h2>
-
-                                     {% else %}
-                                            <h2 class="">small title here </h2>
-                                  {% endif %}
+                                            {# Corrected variable and added |safe filter #}
+                                            <h2 class="">{{ hnewww.heading | safe }}</h2> 
+                                        {% else %}
+                                            <h2 class="">small title here </h2> {# Or perhaps a default for the third slide's heading #}
+                                        {% endif %}
             
-                                         {% if hnewww %}
-                                        <h2 class=""> {{ hnewww.content | safe }}</h2>
-                                            {% else %}
-                                            <h2 class="">Big title here</h2>
-                                            {% endif %}
+                                        {% if hnewww %}
+                                            <h2 class=""> {{ hnewww.content | safe }}</h2>
+                                        {% else %}
+                                            <h2 class="">Big title here</h2> {# Or a default for the third slide's content #}
+                                        {% endif %}
                                         <a href="{% url 'users:aboutus' %}" class="thm-btn">Learn More</a>
                                     </div>
                                 </div>
@@ -166,12 +165,12 @@
                             <div class="row">
                                 <div class="col-xl-6 col-lg-6">
                                     <div class="make-donation-two__single-img">
-                                        <img src="{% static 'assets/images/resources/make-donation-two-img-1.jpg' %}" alt="">
+                                        <img src="{% static 'assets/images/resources/no-hunger.jpg' %}" alt="">
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6">
                                     <div class="make-donation-two__single-img">
-                                        <img src="{% static 'assets/images/resources/make-donation-two-img-2.jpg' %}" alt="">
+                                        <img src="{% static 'assets/images/resources/good-health.jpg' %}" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -182,12 +181,12 @@
                             <div class="row">
                                 <div class="col-xl-6 col-lg-6">
                                     <div class="make-donation-two__single-img">
-                                        <img src="{% static 'assets/images/resources/make-donation-two-img-1.jpg' %}" alt="">
+                                        <img src="{% static 'assets/images/resources/no-poverty.jpg' %}" alt="">
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6">
                                     <div class="make-donation-two__single-img">
-                                        <img src="{% static 'assets/images/resources/make-donation-two-img-2.jpg' %}" alt="">
+                                        <img src="{% static 'assets/images/resources/quality-edu.jpg' %}" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -245,7 +244,7 @@
                             <div class="row">
                                 <div class="">
                                     <div class="make-donation-two__single-img">
-                                        <img src="{% static 'assets/images/resources/make-donation-two-img-1.jpg' %}" alt="">
+                                        <img src="{% static 'assets/images/resources/aboutus.jpg' %}" alt="">
                                     </div>
                                 </div>
                                
@@ -264,12 +263,12 @@
                             <div class="row">
                                 <div class="col-xl-6 col-lg-6">
                                     <div class="make-donation-two__single-img">
-                                        <img src="{% static 'assets/images/resources/make-donation-two-img-1.jpg' %}" alt="">
+                                        <img src="{% static 'assets/images/resources/mission1.jpg' %}" alt="">
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6">
                                     <div class="make-donation-two__single-img">
-                                        <img src="{% static 'assets/images/resources/make-donation-two-img-1.jpg' %}" alt="">
+                                        <img src="{% static 'assets/images/resources/mission2.jpg' %}" alt="">
                                     </div>
                                 </div>
                                
