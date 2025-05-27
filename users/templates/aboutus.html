@@ -1,94 +1,249 @@
 {% extends 'basemain.html' %}
-{% load static  %}
+{% load static %}
+
+{% block title %}About Us - Kenyan Feminine Goddess{% endblock %}
 
 {% block content %}
+<style>
+    /* General Section Title Styling (can be reused on other pages if moved to global CSS) */
+    .section-subtitle {
+        color: #FF1765; /* Theme pink */
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 0.5rem;
+        font-size: 0.9em;
+    }
+
+    .section-main-title {
+        font-size: 2.5em; /* Adjust as per your theme */
+        font-weight: bold;
+        margin-bottom: 1.5rem;
+        color: #333; /* Or your theme's main heading color */
+    }
+
+    .section-title-divider {
+        width: 60px;
+        height: 3px;
+        background-color: #FF1765; /* Theme pink */
+        margin-top: 10px;
+        margin-bottom: 30px;
+    }
+    .section-title-divider.mx-auto { /* For centering the divider */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    /* Styling for the "Make Donation Two" section if used as main About Us content */
+    .make-donation-two .block-title h2.section-main-title { /* More specific for overrides if needed */
+        margin-bottom: 1rem; /* Adjust space after heading */
+    }
+    .make-donation-two__text {
+        line-height: 1.7;
+        font-size: 1.05em; /* Slightly larger text for readability */
+        color: #555;
+    }
+    .make-donation-two__right img {
+        border-radius: 8px; /* Add some rounding to images in this section */
+    }
+    .make-donation-two__progress {
+        /* Styles for progress bars if kept on this page */
+    }
+    .make-donation-two__progress-title {
+        font-size: 1.1em;
+        margin-bottom: 0.5rem;
+    }
+
+
+    /* Founder Stories Section Styling */
+    .founder-stories-section {
+        padding-top: 60px;    /* Adjusted padding */
+        padding-bottom: 60px; /* Adjusted padding */
+        background-color: #f9f9f9; /* Slightly off-white background */
+    }
+
+    .featured-card {
+        background-color: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden; /* Ensures image corners also adhere to border-radius */
+    }
+
+    .featured-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+
+    .featured-card .featured-image img.card-img-top-custom {
+        width: 100%;
+        height: 250px; /* Fixed height for images - adjust as needed */
+        object-fit: cover; /* Cover the area, will crop if aspect ratio differs */
+        /* border-top-left-radius: 8px; */ /* Handled by card overflow:hidden */
+        /* border-top-right-radius: 8px; */
+    }
+
+    .featured-card .featured-content {
+        padding: 20px; /* Using direct padding instead of Bootstrap p-4 for self-containment */
+    }
+
+    .featured-card .featured-content h4 {
+        font-size: 1.35em; /* Slightly larger story title */
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 15px; /* More space below title */
+    }
+
+    .featured-card .featured-content p {
+        font-size: 0.95em;
+        line-height: 1.6;
+        color: #555;
+        margin-bottom: 20px; /* Space before button */
+    }
+
+    .featured-card .btn-primary { /* Assuming Bootstrap is loaded for .btn and .btn-primary base styles */
+        background-color: #FF1765; /* Theme pink */
+        border-color: #FF1765;
+        font-weight: bold;
+        color: white;
+    }
+    .featured-card .btn-primary:hover {
+        background-color: #d60f4f; /* Darker pink */
+        border-color: #d60f4f;
+        color: white;
+    }
+    .featured-card .btn-primary .fas { /* If using Font Awesome icons in buttons */
+        margin-left: 5px;
+    }
+
+    /* Styling for the CTA section to ensure text is readable */
+    .cta-one .cta-one__text h3 {
+        color: white; /* Ensure heading is white on dark background */
+        margin-bottom: 15px;
+    }
+    .cta-one .cta-one__text p.welcome-one__text2 {
+        font-size: 1.1em; /* Ensure paragraph is readable */
+        color: #f0f0f0; /* Slightly off-white for better contrast if needed */
+    }
+
+</style>
+
 <br><br>
-<!--Make Donation Two Start-->
-<section class="make-donation-two">
+<!--Main About Us Content Section (formerly Make Donation Two structure)-->
+<section class="main-about-us-section py-5">
     <div class="container">
-       <br>    <br>
-        <div class="row">
-            <div class="col-xl-6 col-lg-6">
-                <div class="make-donation-two__left">
+            <div class="row mt-5"> {# Increased bottom margin for section title #}
+                <div class="col-12 text-center">
+                <h4 class="section-subtitle"></h4>
+                <h2 class="section-main-title">Our Story</h2>
+                <div class="section-title-divider mx-auto"></div>
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="content-block pe-lg-4"> {# Added padding-end for lg screens #}
                     <div class="block-title text-left">
-                 {% if aboutUs %}
-       
-                        <h2 class="welcome-one__text2">{{ aboutUs.heading | safe }}</h2>
-                      
+                        {% if aboutUs %}
+                        <!-- <h2 class="welcome-one__text2">KENYAN FEMININE GODDESS AND THE GODDESS CARE INITIATIVE&nbsp;</h2> -->
+                            <h2 class="section-main-title">Who We Are and Why We Exist</h2>
+                            <!-- <h4 class="section-main-title">{{ aboutUs.heading|safe }}</h4> -->
+                        {% else %}
+                            <h4 class="section-subtitle">KNOW MORE ABOUT US</h4>
+                            <h2 class="section-main-title">Transforming Women's Health and Well-being</h2>
+                        {% endif %}
                     </div>
-                
-                    <p class="make-donation-two__text">{{ aboutUs.content | safe }}</p>
+                    {% if aboutUs %}
+                        <div class="make-donation-two__text mb-4">{{ aboutUs.content|safe }}</div>
                     {% else %}
-                    <p class="make-donation-two__text">Update About us Content in the Admin Edit Pages Section</p>
+                        <p class="make-donation-two__text mb-4">Update About us Content in the Admin Edit Pages Section. The Kenyan Feminine Goddess, through the Goddess Care Initiative, is dedicated to improving women's health in marginalized communities, addressing the impacts of poor healthcare systems, and creating a safer and healthier future for all women, especially in rural Kenya.</p>
                     {% endif %}
                 </div>
             </div>
-            <div class="col-xl-6 col-lg-6">
-                <div class="make-donation-two__right">
-                    <div class="row">
-                        <div class="col-xl-6 col-lg-6">
-                            <div class="make-donation-two__single-img">
-                                <img src="{% static 'assets/images/resources/make-donation-one-img-1.png' %}" alt="">
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6">
-                            <div class="make-donation-two__single-img">
-                                <img src="{% static 'assets/images/resources/make-donation-img-2.png' %}" alt="">
-                            </div>
+            <div class="col-lg-6 mt-4 mt-lg-0">
+                <div class="image-block text-center"> {# Centered image #}
+                    <img src="{% static 'assets/images/resources/make-donation-img-2.png' %}" alt="About Kenyan Feminine Goddess" class="img-fluid rounded shadow-lg"> {# Example image, replace with actual one. Added shadow. #}
+                </div>
+            </div>
+        </div>
+
+        {# Removed Funding/Donations progress bars - can be a separate component/page #}
+    </div>
+</section>
+<!--Main About Us Content Section End-->
+
+<!-- Featured Founder Stories Section Start -->
+<section class="founder-stories-section py-5 bg-light">
+    <div class="container">
+        <div class="row mb-5"> {# Increased bottom margin for section title #}
+            <div class="col-12 text-center">
+                <h4 class="section-subtitle"></h4>
+                <h2 class="section-main-title">Meet Our Founder: A Story of Resilience</h2>
+                <div class="section-title-divider mx-auto"></div>
+            </div>
+        </div>
+
+        <div class="row g-lg-5 g-md-4 g-3 justify-content-center"> {# Adjusted gutters, g-lg-5 for larger gaps on large screens #}
+            <!-- Featured Story Card 1: Kelly Shitambasi -->
+            <div class="col-lg-5 col-md-6 mb-5">
+                <div class="featured-card h-100 d-flex flex-column">
+                    <div class="featured-image">
+                        <img src="{% static 'assets/images/resources/kellyshitambasi.jpeg' %}" 
+                             alt="Kelly Shitambasi" 
+                             class="img-fluid card-img-top-custom">
+                    </div>
+                    <div class="featured-content p-4 flex-grow-1 d-flex flex-column">
+                        <h4 class="mb-3">Kelly Shitambasi’s journey from cancer to community</h4>
+                        <p class="flex-grow-1">Kelly Shitambasi, a 28-year-old Kenyan cancer survivor, transformed her personal struggles into a powerful mission. Diagnosed with melanoma at 14 ...</p>
+                        <div class="mt-auto"> {# Ensures button is at the bottom of the card #}
+                            <a href="https://canvasrebel.com/meet-kelly-shitambasi/" target="_blank" class="btn btn-primary align-self-start rounded-pill">View Whole Story <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="make-donation-two__progress">
-                    <div class="make-donation-two__progress-single">
-                       <h4 class="make-donation-two__progress-title">Funding</h4>
-                        <div class="bar">
-                            <div class="bar-inner count-bar" data-percent="20%">
-                                <div class="count-text">13%</div>
-                            </div>
-                        </div>
+            </div>
+
+            <!-- Featured Story Card 2: Standard Media Article -->
+            <div class="col-lg-5 col-md-6 mb-5">
+                <div class="featured-card h-100 d-flex flex-column">
+                    <div class="featured-image">
+                        <img src="{% static 'assets/images/resources/fs2.png' %}" {# Ensure this image exists #}
+                             alt="Kelly Sitambasi - Standard Media Feature" 
+                             class="img-fluid card-img-top-custom">
                     </div>
-                    <div class="make-donation-two__progress-single">
-                       <h4 class="make-donation-two__progress-title">Donations</h4>
-                        <div class="bar mrb-0">
-                            <div class="bar-inner count-bar" data-percent="36%">
-                                <div class="count-text">36%</div>
-                            </div>
-                        </div>
+                    <div class="featured-content p-4 flex-grow-1 d-flex flex-column">
+                        <h4 class="mb-3">Kelly Sitambasi: Turning pain into purpose</h4>
+                        <p class="flex-grow-1">Featured in The Standard, Kelly shares more about her inspiring journey and the mission behind Kenyan Feminine Goddess and the Goddess Care Initiative...</p>
+                        <div class="mt-auto">
+<a href="https://www.standardmedia.co.ke/evewoman/achieving-woman/article/2001519732/kelly-sitambasi-turning-pain-into-purpose" target="_blank" class="btn btn-primary align-self-start rounded-pill">Read Full Article <i class="fas fa-arrow-right"></i></a>                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!--Make Donation Two End-->
+<!-- Featured Founder Stories Section End -->
 
 <!--CTA One Start-->
 <section class="cta-one" style="background-image: url({% static 'assets/images/backgrounds/cta-one-bg.png' %})">
     <div class="container">
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="row">
-                    <div class="col-xl-9">
-                        <div class="cta-one__inner">
-                            <div class="cta-one__text">
-                                {% if volunteer %}
-
-                    <p class="welcome-one__text2">{{ volunteer.content | safe }}</p>
-                    {% else %}
-                    <p class="welcome-one__text2">Update Volunteer content in the Admin Edit Profile Section</p>
-                {% endif %}
-                               
-                                
-                            </div>
-                           
-                        </div>
-                    </div>  
-                <div class="col-xl-3">
-                    <div class="cta-one__btn">
-                        <a href="" class="thm-btn">Get Involved Now</a>
+        <div class="row align-items-center">
+            <div class="col-xl-9 col-lg-8">
+                <div class="cta-one__inner">
+                    <div class="cta-one__text">
+                        {% if volunteer %}
+                            {% if volunteer.heading %}<h3 class="cta-heading">{{ volunteer.heading|safe }}</h3>{% endif %}
+                            <p class="cta-paragraph">{{ volunteer.content|safe }}</p>
+                        {% else %}
+                            <h3 class="cta-heading">Join Us in Making a Difference</h3>
+                            <p class="cta-paragraph">If you share our vision and passion for creating change, we invite you to join us on this incredible journey. Whether you're a volunteer, donor, or partner, together we can make a tangible difference within our communities.</p>
+                        {% endif %}
                     </div>
                 </div>
-            </div>
+            </div>  
+            <div class="col-xl-3 col-lg-4 text-lg-end text-center mt-4 mt-lg-0">
+                <div class="cta-one__btn">
+                    <a href="{% url 'users:contactus' %}" class="thm-btn">Get Involved Now</a>
+                </div>
             </div>
         </div>
     </div>
@@ -97,4 +252,4 @@
 
 {% include 'footer.html' %}
 
-    {% endblock %}
+{% endblock %}
