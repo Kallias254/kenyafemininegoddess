@@ -51,7 +51,7 @@ def event_list(request):
 
     # For past events, maybe show a limited number without pagination initially, or paginate separately later.
     # For now, let's just pass a slice of recent past events.
-    recent_past_events = past_events_queryset[:6] 
+    recent_past_events = past_events_queryset[:3] 
 
     context = {
         "query": query,
@@ -101,6 +101,34 @@ def event_detail(request, slug):
     # Since you confirmed 'event_detail.html' is in the project-level 'templates/' dir:
     return render(request, 'event_detail.html', context)
 # ^^^^^^ END OF event_detail FUNCTION ^^^^^^
+
+def all_past_events(request):
+    now = timezone.now()
+    past_events_queryset = Event.objects.filter(
+        status__in=["scheduled", "completed"], # Include completed if you use that status
+        start_datetime__lt=now
+    ).order_by('-start_datetime') # Show most recent past first
+
+    query = request.GET.get("q")
+    if query: # Allow searching within past events too
+        past_events_queryset = past_events_queryset.filter(
+            Q(title__icontains=query) |
+            Q(description__icontains=query) |
+            Q(location_name__icontains=query) |
+            Q(tags__name__icontains=query)
+        ).distinct()
+
+    paginator = Paginator(past_events_queryset, 9) # Paginate by 9 (e.g., 3x3 grid or 9 list items)
+    page_number = request.GET.get('page')
+    past_events_page_obj = paginator.get_page(page_number)
+
+    context = {
+        "query": query,
+        "past_events_page": past_events_page_obj, # Note the different context variable name
+        "page_title": "Past Events Archive"
+    }
+    # You'll need a new template for this page
+    return render(request, 'all_past_events.html', context)
 
 # vvvvvv ADD THIS CLASS-BASED VIEW FOR SEARCH vvvvvv
 class EventSearchView(ListView):

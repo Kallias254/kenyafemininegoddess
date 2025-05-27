@@ -182,7 +182,11 @@
                 {% endif %}
             </div>
             <!-- End Past Events Section -->
-
+            {% if past_events %} 
+                <div class="text-center mt-4">
+                    <a href="{% url 'blogapp:all_past_events' %}" class="thm-btn">View All Past Events</a> {# Link to the new page #}
+                </div>
+            {% endif %}
         </div>
     </section>
     <!-- Events Page End -->

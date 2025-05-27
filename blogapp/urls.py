@@ -11,7 +11,7 @@ urlpatterns = [
 
     # ADD THIS LINE FOR THE SEARCH FUNCTIONALITY
     path('search/', views.EventSearchView.as_view(), name="event_search"), # Using generic EventSearchView
-
+    path('archive/past/', views.all_past_events, name="all_past_events"), # << NEW URL
     path('<slug:slug>/', views.event_detail, name="event_detail"),
     # Note: The detail view <slug:slug> should usually be last if it can match general strings,
     # to avoid it capturing 'search' or 'category'.

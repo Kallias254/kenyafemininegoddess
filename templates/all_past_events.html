@@ -1,0 +1,102 @@
+{% extends 'basemain.html' %}
+{% load static %}
+
+{% block title %}{{ page_title }} - KFG Events{% endblock %}
+
+{% block content %}
+<div class="page-wrapper">
+    <section class="events-page-section py-5">
+        <div class="all-past-events-section container">
+            <div class="block-title text-center mb-5"> {# Centered title for this page #}
+                <h4>Our Event History</h4>
+                <h2>{{ page_title }}</h2>
+            </div>
+
+            {% if query %}
+                <p class="lead text-center">Showing results for: "{{ query }}"</p>
+            {% endif %}
+
+            <div class="row">
+                {% for event_item in past_events_page %} {# Loop through paginated past_events_page #}
+                    {# --- PASTE YOUR THEMED HORIZONTAL CARD HTML HERE --- #}
+                    {# (The same card structure from events_list.html) #}
+                    <div class="col-12 mb-4"> 
+                        <div class="news-one__single event-card-themed"> 
+                            <div class="row g-0"> 
+                                <div class="col-md-4"> 
+                                    <div class="news-one__img"> 
+                                        <div class="news-one__img-box" style="position: relative;"> 
+                                            <a href="{{ event_item.get_absolute_url }}">
+                                                {% if event_item.featured_image %}
+                                                    <img src="{{ event_item.featured_image.url }}" alt="{{ event_item.title }}" class="event-card-image-themed">
+                                                {% else %}
+                                                    <img src="{% static 'assets/images/default-event-placeholder.jpg' %}" alt="Default Event Image" class="event-card-image-themed">
+                                                {% endif %}
+                                            </a>
+                                            <div class="news-one__date-box event-date-themed" style="background-color: rgba(108, 117, 125, 0.8);">
+                                                <p>{{ event_item.start_datetime|date:"d" }} <br> {{ event_item.start_datetime|date:"M" }} <br> {{ event_item.start_datetime|date:"Y" }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-8"> 
+                                    <div class="news-one__content event-content-themed"> 
+                                        <ul class="list-unstyled news-one__meta">
+                                            {% if event_item.category %}
+                                                <li><i class="fas fa-folder-open"></i> {{ event_item.category.name }}</li>
+                                            {% endif %}
+                                            {% if event_item.location_name %}
+                                                 {% if event_item.category %}<li><span>/</span></li>{% endif %}
+                                                <li><i class="fas fa-map-marker-alt"></i> {{ event_item.location_name }}</li>
+                                            {% endif %}
+                                        </ul>
+                                        <div class="news-one__title">
+                                            <h3><a href="{{ event_item.get_absolute_url }}">{{ event_item.title }}</a></h3>
+                                        </div>
+                                        <p class="event-datetime-themed mb-2">
+                                            <small><i class="fas fa-clock"></i> {{ event_item.start_datetime|date:"D, d M Y, P" }}
+                                            {% if event_item.end_datetime %} to {{ event_item.end_datetime|date:"P" }}{% endif %}
+                                            </small>
+                                        </p>
+                                        <p class="event-description-themed">
+                                            {{ event_item.description|striptags|truncatewords:20 }}
+                                        </p>
+                                        <a href="{{ event_item.get_absolute_url }}" class="thm-btn news-one__btn btn-outline-secondary">View Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {# --- END OF PASTED CARD HTML --- #}
+                {% empty %}
+                    <div class="col-12">
+                        <p>No past events found{% if query %} for "{{ query }}"{% endif %}.</p>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <!-- Pagination for All Past Events -->
+            {% if past_events_page.has_other_pages %}
+            <div class="row mt-4">
+                <div class="col-lg-12">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination justify-content-center">
+                            {% if past_events_page.has_previous %}
+                                <li class="page-item"><a class="page-link" href="?page=1{% if query %}&q={{ query }}{% endif %}">« First</a></li>
+                                <li class="page-item"><a class="page-link" href="?page={{ past_events_page.previous_page_number }}{% if query %}&q={{ query }}{% endif %}">Previous</a></li>
+                            {% endif %}
+                            <li class="page-item disabled"><a class="page-link" href="#">Page {{ past_events_page.number }} of {{ past_events_page.paginator.num_pages }}</a></li>
+                            {% if past_events_page.has_next %}
+                                <li class="page-item"><a class="page-link" href="?page={{ past_events_page.next_page_number }}{% if query %}&q={{ query }}{% endif %}">Next</a></li>
+                                <li class="page-item"><a class="page-link" href="?page={{ past_events_page.paginator.num_pages }}{% if query %}&q={{ query }}{% endif %}">Last »</a></li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+</div>
+<a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
+{% endblock %}
