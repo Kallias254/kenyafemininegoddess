@@ -145,6 +145,10 @@
     .event-card-themed .news-one__date-box.event-date-themed {
         /* Adjust date position if needed for stacked view, already relative to image box */
     }
+
+    .main-nav__left-three .side-menu__toggler {
+    margin-top: 0px;
+}
 }
 
 .upcoming-events-section, .all-past-events-section {
@@ -191,5 +195,3 @@ margin-top: 10rem;
 .event-card-themed .news-one__img-box > a:after {
     display: none !important;
 }
-
-

@@ -1,33 +1,44 @@
-
-
-
-
-
-        {% load static %}
+{% load static %}
 <div class="site-header__header-three-wrap clearfix">
-
     <div class="container">
         <header class="main-nav__header-three">
             <nav class="header-navigation stricky original">
-                <div class="main-nav__header-three__content-box clearfix">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="main-nav__left main-nav__left-three float-left">
+                {# --- MODIFICATION STARTS HERE --- #}
+                {# Add Bootstrap flexbox classes to this div #}
+                <div class="main-nav__header-three__content-box clearfix d-flex justify-content-between align-items-center"> 
+                    
+
+
+                    {# This div now becomes the primary left item, containing logo AND mobile toggler #}
+                    {# It will be a flex container to align its children (logo and toggler) #}
+                    <div class="main-nav__left main-nav__left-three d-flex align-items-center justify-content-between flex-grow-1 flex-lg-grow-0">
+                        {# flex-grow-1 ensures it tries to take available space on mobile if desktop nav is hidden #}
+                        {# flex-lg-grow-0 ensures it only takes content width on large screens, allowing desktop nav to appear #}
+                        
                         <div class="logo">
-                            <a href="{% url 'users:home' %}"><img src="{% static 'assets/images/resources/log33.png' %}" width="55%"  alt="" style="margin: 10px;" ></a>
+                            <a href="{% url 'users:home' %}">
+                                <img src="{% static 'assets/images/resources/log33.png' %}" alt="KFG Logo" style="max-height: 80px; width: auto; margin: 5px 10px; display: block;"> {# Adjusted size slightly for typical navbar height #}
+                            </a>
                         </div>
-                        <a href="#" class="side-menu__toggler">
+
+                        {# Mobile menu toggler - only visible on screens smaller than LG #}
+                        <a href="#" class="side-menu__toggler d-lg-none" style="padding: 10px; font-size: 1.5rem; color: #FF1765; margin-right: 20px;"> {# Example styling - adjust color to your theme's pink #}
                             <i class="fa fa-bars"></i>
                         </a>
                     </div>
-                    <div class="main-nav__main-navigation main-nav__main-navigation__three float-left clearfix">
-                        <ul class=" main-nav__navigation-box float-left">
+
+                    {# Main Navigation Links - Remove float-left. Add classes to hide on small screens (Bootstrap handles collapse) #}
+                    {# This assumes your theme's mobile menu is an off-canvas triggered by side-menu__toggler #}
+                    {# If not, and you want Bootstrap collapse, the structure inside here needs to change more significantly #}
+                    <div class="main-nav__main-navigation main-nav__main-navigation__three clearfix d-none d-lg-block"> {# d-none d-lg-block: Hidden by default, block on large screens #}
+                        <ul class="main-nav__navigation-box my-0"> {# Removed float-left, added my-0 for no margin #}
                             <li>
                                 <a href="{% url 'users:home' %}">Home</a>
                             </li>
                             <li>
                                 <a href="{% url 'users:aboutus' %}">About Us</a>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown"> {# Keep your theme's dropdown class, assuming its JS handles it #}
                                 <a href="{% url 'users:programs' %}">Our Programs<button class="dropdown-btn"></button></a>
                                 <ul>
                                     <li><a href="{% url 'users:programs' %}">Goddess Care Initiative</a></li>
@@ -42,25 +53,16 @@
                             <li>
                                 <a href="{% url 'users:contactus' %}">Contact Us</a>
                             </li>
-                           
-                           
                         </ul>
-                    </div><!-- /.navbar-collapse -->
-                    <!-- <div class="main-nav__right-three float-right">
-                        <div class="main-nav__right__btn-one">
-                            <a href="campaigns.html"><i class="fas fa-heart"></i>Donate</a>
-                        </div>
+                    </div><!-- /.navbar-collapse (original comment) -->
                     
-                        <div class="main-nav__right__icon-search-box">
-                            <a href="#" class="main-nav__search search-popup__toggler">
-                                <i class="icon-magnifying-glass"></i>
-                            </a>
-                        </div>
-                    </div> -->
+                    {# --- MODIFICATION ENDS HERE --- #}
+
+                    <!-- Original Right side elements (Search, Donate) would go here if needed -->
+                    <!-- <div class="main-nav__right-three float-right"> ... </div> -->
+
                 </div>
             </nav>
-            
-  
         </header>
     </div>
 </div>
