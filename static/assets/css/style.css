@@ -1383,7 +1383,7 @@ li {
     margin-top: 10px;
     margin-bottom: 41px;
     color: #fff;
-    font-size: 90px;
+    font-size: 60px;
     line-height: 70px;
     opacity: 0;
     visibility: hidden;
@@ -1527,7 +1527,7 @@ li {
     position: relative;
     display: block;
     text-align: left;
-    padding-top: 227px;
+    padding-top: 200px;
 }
 
 .main-slider-two p:before {
