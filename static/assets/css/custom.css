@@ -201,4 +201,6 @@ margin-top: 10rem;
     display: none !important;
 }
 
-
+.thm-breadcrumb li a {
+font-size: 16px !important;
+}

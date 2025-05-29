@@ -7,12 +7,15 @@
 <div class="page-wrapper">
 
     <section class="events-page-section py-5">
-        <div class="container">
-            
+        <div class="upcoming-events-section container">
+            <div class="block-title text-center mb-5"> {# Centered title for this page #}
+                <h4>Our Events</h4>
+                <h2>{{ page_title }}</h2>
+            </div>
             <!-- Upcoming Events Section -->
-            <div class="upcoming-events-section mb-5">
+            <div class="mb-5">
                 <div class="block-title text-left mb-4">
-                    <h3>Stay Upto Date</h3>
+                    <!-- <h3>Stay Upto Date</h3> -->
                     <!-- <h2>Upcoming Events</h2> -->
                 </div>
                 {% if query %}
@@ -109,7 +112,7 @@
 
             <!-- Past Events Section -->
             <div class="past-events-section">
-                <div class="block-title text-left mb-4">
+                <div class="block-title text-center mb-4">
                     <!-- <h4>From Our Archives</h4> -->
                     <h3>Past Events</h3>
                 </div>
