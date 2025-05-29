@@ -46,10 +46,10 @@
                                         <div class="news-one__content event-content-themed"> 
                                             <ul class="list-unstyled news-one__meta">
                                                 {% if event_item.category %}
-                                                <li><i class="fas fa-folder-open"></i> {{ event_item.category.title }}</li>
+                                                <!-- <li><i class="fas fa-folder-open"></i> {{ event_item.category.title }}</li> -->
                                             {% endif %}
                                                 {% if event_item.location_name %}
-                                                     {% if event_item.category %}<li><span>/</span></li>{% endif %}
+                                                     {% if event_item.category %}{% endif %}
                                                     <li><i class="fas fa-map-marker-alt"></i> {{ event_item.location_name }}</li>
                                                 {% endif %}
                                             </ul>
@@ -138,22 +138,23 @@
 
                                     <div class="col-md-8">
                                         <div class="news-one__content event-content-themed">
-                                            <ul class="list-unstyled news-one__meta">
-                                                {% if event_item.category %}
-                                                    <li>
-                                                        <i class="fas fa-folder-open"></i> 
-                                                        {# If you removed category pages, just display the name, no link #}
-                                                        {{ event_item.category.title }}
-                                                    </li>
-                                                {% endif %}
-                                                {% if event_item.location_name %}
-                                                     {% if event_item.category %}<li><span>/</span></li>{% endif %}
-                                                    <li><i class="fas fa-map-marker-alt"></i> {{ event_item.location_name }}</li>
-                                                {% endif %}
-                                            </ul>
+
                                             <div class="news-one__title">
                                                 <h3><a href="{{ event_item.get_absolute_url }}">{{ event_item.title }}</a></h3>
                                             </div>
+                                            <ul class="list-unstyled news-one__meta">
+                                                {% if event_item.category %}
+                                                    <!-- <li> -->
+                                                        <!-- <i class="fas fa-folder-open"></i>  -->
+                                                        {# If you removed category pages, just display the name, no link #}
+                                                        <!-- {{ event_item.category.title }} -->
+                                                    <!-- </li> -->
+                                                {% endif %}
+                                                {% if event_item.location_name %}
+                                                     {% if event_item.category %}{% endif %}
+                                                    <li><i class="fas fa-map-marker-alt"></i> {{ event_item.location_name }}</li>
+                                                {% endif %}
+                                            </ul>
                                             <p class="event-datetime-themed mb-2">
                                                 <small><i class="fas fa-clock"></i> {{ event_item.start_datetime|date:"D, d M Y, P" }}
                                                 {% if event_item.end_datetime %}

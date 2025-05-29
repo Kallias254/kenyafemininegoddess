@@ -80,9 +80,14 @@
 .event-card-themed .news-one__meta {
     /* Theme styles should apply, maybe adjust margin */
     margin-bottom: 10px;
+    display: block;
 }
 .event-card-themed .news-one__meta li {
     font-size: 0.85em; /* Slightly smaller meta */
+}
+
+.event-card-themed .news-one__meta li + li {
+    margin-left: 0px;
 }
 
 .event-card-themed .news-one__title h3 {
@@ -195,3 +200,5 @@ margin-top: 10rem;
 .event-card-themed .news-one__img-box > a:after {
     display: none !important;
 }
+
+
