@@ -377,26 +377,18 @@
             .removeClass("original");
     }
 
+    $(".side-menu__toggler, .mobile-nav__toggler").on("click", function(e) {
+        $(".mobile-nav__wrapper").toggleClass("expanded");
+        e.preventDefault();
+    });
+    
+    $(".mobile-nav__overlay").on("click", function(e) {
+        $(".mobile-nav__wrapper").removeClass("expanded");
+        e.preventDefault();
+    });
 
 
-
-    if ($(".side-menu__toggler").length) {
-        $(".side-menu__toggler").on("click", function (e) {
-            $(".mobile-nav__wrapper").toggleClass("expanded");
-            e.preventDefault();
-        });
-    }
-
-
-
-    if ($(".mobile-nav__overlay").length) {
-        $(".mobile-nav__overlay").on("click", function (e) {
-            $(".side-menu__block").removeClass("expanded");
-            e.preventDefault();
-        });
-    }
-
-
+    
 
 
 
