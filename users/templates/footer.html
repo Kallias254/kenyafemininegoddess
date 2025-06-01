@@ -1,24 +1,32 @@
 {% load static %}
 
 <!--Site Footer One Start-->
-<footer class="site-footer" style="background-image: url({% static 'assets/images/backgrounds/site_footer_bg.jpg' %); " >
+<footer class="site-footer" style="background-image: url({% static 'assets/images/backgrounds/site_footer_bg.jpg' %}); " >
     <div class="container">
         <div class="site-footer__one-top">
             <div class="row">
                 <div class="col-xl-9 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
                     <div class="footer-widget__column footer-widget__about">
                         <div class="footer-widget__logo">
-                            <a href="index.html"><img src="{% static 'assets/images/resources/log.png' %}" alt="" style="width: 200px; height: auto;"></a>
+                            {# Make sure your logo path is correct and image exists #}
+                            <a href="/"><img src="{% static 'assets/images/resources/log33.png' %}" alt="KFG Logo" style="width: 200px; height: auto;"></a>
                         </div>
-                        {% if footer %}
-       
-                        <p class="welcome-one__text2">{{ footer.content | safe }}</p>
+                        
+                        {# MODIFIED PART to use global_footer from context processor #}
+                        {% if global_footer and global_footer.content %}
+                            <div class="footer-widget__about-text-box"> {# Added a wrapper div for better structure/styling if needed #}
+                                <p class="welcome-one__text2">{{ global_footer.content|safe }}</p>
+                            </div>
                         {% else %}
-                        <p class="welcome-one__text2">Update Footer content in the Admin Edit Profile Section</p>
-                    {% endif %}                      
-                      <div class="site-footer__social">
+                            {# Fallback text if global_footer or its content isn't set in admin #}
+                            <div class="footer-widget__about-text-box">
+                                <p class="welcome-one__text2">Transforming women’s health, one community at a time.</p>
+                            </div>
+                        {% endif %}                      
+                        
+                        <div class="site-footer__social">
                             <a href="https://twitter.com/kefegod" target="_blank"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="clr-fb"><i class="fab fa-facebook-square"></i></a>
+                            <a href="#" class="clr-fb"><i class="fab fa-facebook-square"></i></a> {# Add actual Facebook link #}
                             <a href="https://www.instagram.com/kenyan_feminine_goddess"  target="_blank" class="clr-ins"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
@@ -60,8 +68,20 @@
            
             </div>
         </div>
+        {# Adding the copyright bottom section, assuming it's part of this footer block #}
+        <div class="site-footer__bottom mt-4"> {# Added margin-top for spacing #}
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="site-footer__bottom-inner text-center"> {# Centered text #}
+                            <p class="site-footer__bottom-text">© {% now "Y" %} Kenyan Feminine Goddess. All Rights Reserved.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </footer>
 <!--Site Footer One End-->
 
-<!--Site Footer Bottom End-->
+{# The block content from other templates ends before the footer usually, so no "Site Footer Bottom End" comment needed here #}

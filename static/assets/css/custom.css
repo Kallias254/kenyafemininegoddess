@@ -204,3 +204,81 @@ margin-top: 10rem;
 .thm-breadcrumb li a {
 font-size: 16px !important;
 }
+
+
+.meet-team-section .block-title h2.main-title-kfg { /* Or use your theme's existing title classes */
+    font-size: 2.5em; /* Example */
+    margin-bottom: 10px;
+}
+
+.meet-team-section .block-title h4.small-title-kfg {
+    font-size: 1em;
+    color: #FF1765; /* Theme pink */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.team-member-row .meet-volunteers-one__single {
+    /* Your theme likely styles this. Add overrides if needed. */
+    /* e.g., margin-bottom: 0; if the row's mb-5 is enough */
+    border: none; /* Example: remove border if the card is just for layout */
+    box-shadow: none; /* Example: remove shadow if not desired here */
+}
+
+.team-member-row .meet-volunteers-one__img img {
+    max-width: 100%; /* Ensure image doesn't overflow its column */
+    height: auto;   /* Maintain aspect ratio */
+    /* If you want fixed size profile pics:
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    */
+}
+
+.team-member-row .meet-volunteers-one__content {
+    padding-top: 15px; /* Add some space below the image if it's part of the same card */
+}
+
+
+.team-member-bio {
+    font-size: 1em;
+    line-height: 1.7;
+    /* Add any other styling for the bio text */
+}
+
+.team-member-bio p:last-child {
+    margin-bottom: 0;
+}
+
+/* On mobile, the default stacking of Bootstrap columns should work.
+   The order classes (order-md-*, order-lg-*) only apply from those breakpoints upwards.
+   So, on xs and sm screens, elements will appear in their HTML source order within the row.
+   Since image is first for Kelly/Loise, and text is first for Elsie in the HTML structure:
+   - Kelly: Image then Text
+   - Elsie: Text then Image  <-- This might need adjustment if you always want Image on top for mobile
+   - Loise: Image then Text
+*/
+
+/* If you ALWAYS want image on top on mobile for Elsie too: */
+@media (max-width: 991.98px) { /* Up to medium screens (before lg kicks in for Elsie's reorder) */
+    .team-member-row .order-lg-1 { /* Targets Elsie's text block on md screens */
+        order: 2; /* Move text below */
+    }
+    .team-member-row .order-lg-2 { /* Targets Elsie's image block on md screens */
+        order: 1; /* Move image above */
+    }
+}
+@media (max-width: 767.98px) { /* For sm and xs screens, reset specific lg orders if they interfere */
+    .team-member-row .order-lg-1,
+    .team-member-row .order-lg-2 {
+        order: initial; /* Let natural HTML flow (which depends on order-md-*) dictate stacking */
+    }
+     /* Ensure image is always first on small screens */
+    .team-member-row > div:first-child { /* If image div is always first child in HTML for stacking */
+       /* No specific order needed, it will stack first */
+    }
+     .team-member-row > div:nth-child(2) {
+        /* No specific order needed, it will stack second */
+    }
+}
